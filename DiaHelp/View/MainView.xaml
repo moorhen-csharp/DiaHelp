@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DiaHelp.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Привет, давай познакомимся!" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
+
+        <Entry HeightRequest="10" Placeholder="Email" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+        <Entry IsPassword="True" HeightRequest="10" Placeholder="Пароль" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+        <Entry IsPassword="True" HeightRequest="10" Placeholder="Повторите пароль" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+
+        <Button Text="Зарегистрироваться" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="6" TextColor="White" CornerRadius="40"/>
+
+        <Label Text="Есть аккаунт?" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="10" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="Center"/>
+        <Button BackgroundColor="Transparent" Text="Войти" Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="2" TextColor="White" VerticalOptions="Start"  />
+
+    </Grid>
+
+</ContentPage>
