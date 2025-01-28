@@ -10,6 +10,12 @@ namespace DiaHelp.Services
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<UserModel> Users { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "diabetic.db");
+            optionsBuilder.UseSqlite($"Filename={dbPath}");
+        }
     }
 }
