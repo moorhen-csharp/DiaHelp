@@ -31,14 +31,14 @@
 
         <Label Text="Войди в свой аккаунт!" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
 
-        <Entry Text="{Binding LoginText}" HeightRequest="10" Placeholder="Email" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold" />
-        <Entry Text="{Binding PasswordText}" IsPassword="True" HeightRequest="10" Placeholder="Пароль" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
-       
+        <Entry Text="{Binding Username}" HeightRequest="10" Placeholder="Email" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+        <Entry Text="{Binding Password}" IsPassword="True" HeightRequest="10" Placeholder="Пароль" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
 
-        <Button Text="Войти" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="6" TextColor="White" CornerRadius="40"/>
+
+        <Button Command="{Binding LoginCommand}" Text="Войти" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="6" TextColor="White" CornerRadius="40"/>
 
         <Label Text="Нет аккаунта?" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="10" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="Center"/>
-        <Button BackgroundColor="Transparent" Text="Зарегистрироваться" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="10" HorizontalOptions="Center" TextColor="White" VerticalOptions="Start"  />
+        <Button Command="{Binding RegisterCommand}" BackgroundColor="Transparent" Text="Зарегистрироваться" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="10" HorizontalOptions="Center" TextColor="White" VerticalOptions="Start"  />
 
     </Grid>
 </ContentPage>

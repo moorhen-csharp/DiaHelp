@@ -1,22 +1,29 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
-namespace DiaHelp.Base
+public class BaseViewModel : INotifyPropertyChanged
 {
-    public class BaseViewModel : INotifyPropertyChanged
-    {
-        [RelayCommand]
-        protected async Task GoBack() => await Shell.Current.GoToAsync("..");
+    public event PropertyChangedEventHandler PropertyChanged;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "")
+    {
+        if (EqualityComparer<T>.Default.Equals(backingStore, value))
+            return false;
+
+        backingStore = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
+    public ICommand GoBackCommand => new RelayCommand(async _ => await GoBack());
+
+    protected virtual async Task GoBack()
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }

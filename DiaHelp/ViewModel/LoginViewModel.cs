@@ -1,72 +1,55 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using DiaHelp.Base;
-using DiaHelp.Interface;
-using DiaHelp.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DiaHelp.Interface;
+using DiaHelp.View;
 using System.Windows.Input;
 
-namespace DiaHelp.ViewModel
+public class LoginViewModel : BaseViewModel
 {
-    public partial class LoginViewModel : BaseViewModel
+    private readonly IDatabaseService _databaseService;
+    private string _username;
+    private string _password;
+
+    public ICommand LoginCommand { get; }
+    public ICommand RegisterCommand { get; }
+
+    public string Username
     {
-        private readonly IDatabaseService _databaseService;
-        private string _loginText;
-        private string _passwordText;
+        get => _username;
+        set => SetProperty(ref _username, value);
+    }
 
-        public LoginViewModel(IDatabaseService databaseService)
+    public string Password
+    {
+        get => _password;
+        set => SetProperty(ref _password, value);
+    }
+
+    public LoginViewModel(IDatabaseService databaseService)
+    {
+        _databaseService = databaseService;
+
+        LoginCommand = new RelayCommand(async _ => await Login());
+        RegisterCommand = new RelayCommand(async _ => await NavigateToRegister());
+    }
+
+    public LoginViewModel()
+    {
+    }
+
+    private async Task Login()
+    {
+        var user = _databaseService.GetUser(Username);
+        if (user != null && BCrypt.Net.BCrypt.Verify(Password, user.Password))
         {
-            _databaseService = databaseService;
+            await Shell.Current.GoToAsync("//MainPage");
         }
-        public string LoginText
+        else
         {
-            get => _loginText;
-            set
-            {
-                _loginText = value;
-                OnPropertyChanged(nameof(LoginText));
-            }
+            await Shell.Current.DisplayAlert("Ошибка", "Неверные данные", "OK");
         }
+    }
 
-        public string PasswordText
-        {
-            get => _passwordText;
-            set
-            {
-                _passwordText = value;
-                OnPropertyChanged(nameof(PasswordText));
-            }
-        }
-
-        private async Task Login()
-        {
-            if (string.IsNullOrEmpty(LoginText) || string.IsNullOrEmpty(PasswordText))
-            {
-                await Shell.Current.DisplayAlert("Ошибка", "Заполните все поля", "OK");
-                return;
-            }
-
-            var user = _databaseService.GetUser(LoginText);
-
-            if (user != null && BCrypt.Net.BCrypt.Verify(PasswordText, user.Password))
-            {
-                Preferences.Set("IsLoggedIn", true);
-                await Shell.Current.GoToAsync("//MainPage");
-            }
-            else
-            {
-                await Shell.Current.DisplayAlert("Ошибка", "Неверные учетные данные", "OK");
-            }
-        }
-
-        [RelayCommand]
-        private async Task NavigateToRegistration()
-        {
-            await Shell.Current.GoToAsync(nameof(RegistrationViewModel));
-        }
+    private async Task NavigateToRegister()
+    {
+        await Shell.Current.GoToAsync(nameof(RegistrationView));
     }
 }

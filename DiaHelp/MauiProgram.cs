@@ -24,14 +24,14 @@ namespace DiaHelp
             builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 
             // Регистрация ViewModels
-            builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<RegistrationViewModel>();
-            builder.Services.AddTransient<MainViewModel>();
+            builder.Services.AddTransient<LoginViewModel>();
 
             // Регистрация страниц
-            builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<RegistrationView>();
-            
+            builder.Services.AddTransient<LoginView>();
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

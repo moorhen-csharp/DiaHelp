@@ -18,6 +18,12 @@ namespace DiaHelp.Services
         {
             try
             {
+                if (context.Users.Any(u => u.Email == userModel.Email))
+                {
+                    return false; // Email уже существует
+                }
+
+                userModel.Password = BCrypt.Net.BCrypt.HashPassword(userModel.Password);
                 context.Users.Add(userModel);
                 context.SaveChanges();
                 return true;
@@ -28,5 +34,6 @@ namespace DiaHelp.Services
                 return false;
             }
         }
+
     }
 }
