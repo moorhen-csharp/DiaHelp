@@ -1,7 +1,10 @@
-﻿using DiaHelp.Services;
+﻿using DiaHelp.Infrastructure;
+using DiaHelp.Interface;
+using DiaHelp.Services;
 using DiaHelp.View;
 using DiaHelp.ViewModel;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Platform;
 
 namespace DiaHelp
 {
@@ -17,10 +20,18 @@ namespace DiaHelp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            builder.Services.AddDbContext<DatabaseContext>();
-            builder.Services.AddSingleton<UserService>();
+            builder.Services.AddDbContext<ApplicationContext>();
+            builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
+
+            // Регистрация ViewModels
             builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<RegistrationViewModel>();
+            builder.Services.AddTransient<MainViewModel>();
+
+            // Регистрация страниц
             builder.Services.AddTransient<LoginView>();
+            builder.Services.AddTransient<RegistrationView>();
+            
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

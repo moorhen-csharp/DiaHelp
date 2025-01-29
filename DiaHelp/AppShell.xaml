@@ -12,4 +12,9 @@
         Title="Авторизация"
         ContentTemplate="{DataTemplate views:LoginView}" 
         Route="LogiView" />
+    
+    <ShellContent
+        Title="Main"
+        ContentTemplate="{DataTemplate views:MainView}"
+        Route="MainPage" />
 </Shell>

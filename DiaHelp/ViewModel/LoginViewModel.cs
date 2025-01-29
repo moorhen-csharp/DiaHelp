@@ -1,44 +1,61 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DiaHelp.Base;
+using DiaHelp.Interface;
 using DiaHelp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
 {
-    public partial class LoginViewModel : ObservableObject
+    public partial class LoginViewModel : BaseViewModel
     {
-        private readonly UserService _userService;
+        private readonly IDatabaseService _databaseService;
+        private string _loginText;
+        private string _passwordText;
 
-        [ObservableProperty]
-        private string _username;
-
-        [ObservableProperty]
-        private string _password;
-
-        public LoginViewModel(UserService userService)
+        public LoginViewModel(IDatabaseService databaseService)
         {
-            _userService = userService;
+            _databaseService = databaseService;
+        }
+        public string LoginText
+        {
+            get => _loginText;
+            set
+            {
+                _loginText = value;
+                OnPropertyChanged(nameof(LoginText));
+            }
         }
 
-        [RelayCommand]
+        public string PasswordText
+        {
+            get => _passwordText;
+            set
+            {
+                _passwordText = value;
+                OnPropertyChanged(nameof(PasswordText));
+            }
+        }
+
         private async Task Login()
         {
-            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(LoginText) || string.IsNullOrEmpty(PasswordText))
             {
                 await Shell.Current.DisplayAlert("Ошибка", "Заполните все поля", "OK");
                 return;
             }
 
-            var user = await _userService.AuthenticateUser(Username, Password);
-            if (user != null)
+            var user = _databaseService.GetUser(LoginText);
+
+            if (user != null && BCrypt.Net.BCrypt.Verify(PasswordText, user.Password))
             {
+                Preferences.Set("IsLoggedIn", true);
                 await Shell.Current.GoToAsync("//MainPage");
-                Username = string.Empty;
-                Password = string.Empty;
             }
             else
             {
@@ -47,11 +64,9 @@ namespace DiaHelp.ViewModel
         }
 
         [RelayCommand]
-        private async Task NavigateToRegister()
+        private async Task NavigateToRegistration()
         {
-            await Shell.Current.GoToAsync("RegistrationView");
+            await Shell.Current.GoToAsync(nameof(RegistrationViewModel));
         }
-
-        
     }
 }

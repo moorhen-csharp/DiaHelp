@@ -69,11 +69,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Interface\" />
-	  <Folder Include="Infrastructure\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="View\MainView.xaml.cs">
 	    <DependentUpon>MainView.xaml</DependentUpon>
 	  </Compile>

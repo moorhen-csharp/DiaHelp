@@ -31,8 +31,8 @@
 
         <Label Text="Войди в свой аккаунт!" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
 
-        <Entry HeightRequest="10" Placeholder="Email" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold" />
-        <Entry IsPassword="True" HeightRequest="10" Placeholder="Пароль" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+        <Entry Text="{Binding LoginText}" HeightRequest="10" Placeholder="Email" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+        <Entry Text="{Binding PasswordText}" IsPassword="True" HeightRequest="10" Placeholder="Пароль" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
        
 
         <Button Text="Войти" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="6" TextColor="White" CornerRadius="40"/>

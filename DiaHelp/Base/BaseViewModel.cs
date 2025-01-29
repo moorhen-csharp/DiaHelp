@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace DiaHelp.Base
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        [RelayCommand]
+        protected async Task GoBack() => await Shell.Current.GoToAsync("..");
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

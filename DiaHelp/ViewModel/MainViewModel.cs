@@ -1,4 +1,5 @@
-﻿using DiaHelp.Base;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DiaHelp.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,13 @@ namespace DiaHelp.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        public MainViewModel() 
-        {
+        [ObservableProperty]
+        private string _welcomeMessage;
 
+        public MainViewModel()
+        {
+            var username = Preferences.Get("Username", string.Empty);
+            WelcomeMessage = $"Добро пожаловать, {username}!";
         }
     }
 }
