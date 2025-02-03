@@ -1,15 +1,16 @@
-﻿namespace DiaHelp
+﻿using DiaHelp.Interface;
+using DiaHelp.ViewModel;
+
+namespace DiaHelp
 {
     public partial class App : Application
     {
-        public App()
+        public App(IWindowService windowService)
         {
             InitializeComponent();
+            MainPage = windowService.GetAndCreateContentPage<LoginViewModel>().View;
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+        
     }
 }

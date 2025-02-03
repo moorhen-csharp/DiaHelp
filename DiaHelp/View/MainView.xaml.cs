@@ -1,11 +1,9 @@
-﻿namespace DiaHelp
-{
-    public partial class MainPage : ContentPage
-    {
-       public MainPage()
-       {
-           InitializeComponent();
-       }
-    }
+namespace DiaHelp.View;
 
+public partial class MainView : ContentPage
+{
+	public MainView()
+	{
+		InitializeComponent();
+	}
 }

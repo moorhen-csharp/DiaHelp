@@ -69,13 +69,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\MainView.xaml.cs">
-	    <DependentUpon>MainView.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="View\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\MainView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\RegistrationView.xaml">

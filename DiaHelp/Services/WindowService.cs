@@ -15,15 +15,7 @@ namespace DiaHelp.Services
             var type = typeof(TViewModel);
             var viewModel = serviceProvider.GetRequiredService<TViewModel>();
 
-            var viewTypeName = $"{type.Namespace.Replace("ViewModel", "View")}.{type.Name.Replace("ViewModel", "View")}";
-            var viewType = Type.GetType(viewTypeName);
-
-            if (viewType == null)
-            {
-                throw new InvalidOperationException($"Type '{viewTypeName}' not found.");
-            }
-
-            var view = Activator.CreateInstance(viewType) as TView;
+            var view = Activator.CreateInstance(Type.GetType($"{type.Namespace.Replace("ViewModel", "View")}.{type.Name.Replace("ViewModel", "View")}")) as TView;
             view.BindingContext = viewModel;
 
             var window = new WindowModel<TView, BaseViewModel> { View = view, ViewModel = viewModel };

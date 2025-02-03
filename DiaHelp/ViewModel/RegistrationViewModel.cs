@@ -4,64 +4,74 @@ using DiaHelp.Services;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-public partial class RegistrationViewModel : BaseViewModel
+namespace DiaHelp.ViewModel
 {
-    private readonly IDatabaseService _databaseService;
-    private string _email;
-    private string _password;
-    private string _confirmPassword;
-
-    
-
-    public string Email
+    public partial class RegistrationViewModel : BaseViewModel
     {
-        get => _email;
-        set => SetProperty(ref _email, value);
-    }
+        private readonly IDatabaseService _databaseService;
+        private readonly IWindowService _windowService;
+        private string _email;
+        private string _password;
+        private string _confirmPassword;
 
-    public string Password
-    {
-        get => _password;
-        set => SetProperty(ref _password, value);
-    }
-
-    public string ConfirmPassword
-    {
-        get => _confirmPassword;
-        set => SetProperty(ref _confirmPassword, value);
-    }
-
-    public RegistrationViewModel(IDatabaseService databaseService)
-    {
-        _databaseService = databaseService;
-        RegisterCmnd = new RelayCommand(async _ => await Register());
-    }
-
-    private async Task Register()
-    {
-        if (Password != ConfirmPassword)
+        public RegistrationViewModel(IDatabaseService databaseService, IWindowService windowService)
         {
-            await Shell.Current.DisplayAlert("Ошибка", "Пароли не совпадают", "OK");
-            return;
+            _windowService = windowService;
+
+            _databaseService = databaseService;
+            RegisterCmnd = new RelayCommand(async _ => await Register());
+            LoginCmnd = new RelayCommand(async _ => await NavigateToLogin());
         }
 
-        var newUser = new User
+        public string Email
         {
-            Email = Email,
-            Password = BCrypt.Net.BCrypt.HashPassword(Password),
-            Username = Email,
-            RegistrationDate = DateTime.UtcNow
-        };
+            get => _email;
+            set => SetProperty(ref _email, value);
+        }
 
-        if (_databaseService.AddUser(newUser))
+        public string Password
         {
-            await Shell.Current.DisplayAlert("Успех", "Регистрация завершена", "OK");
-            await Shell.Current.GoToAsync(".."); // Возврат к странице входа
+            get => _password;
+            set => SetProperty(ref _password, value);
         }
-        else
+
+        public string ConfirmPassword
         {
-            await Shell.Current.DisplayAlert("Ошибка", "Не удалось зарегистрироваться", "OK");
+            get => _confirmPassword;
+            set => SetProperty(ref _confirmPassword, value);
         }
+
+        private async Task Register()
+        {
+            if (Password != ConfirmPassword)
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Пароли не совпадают", "OK");
+                return;
+            }
+
+            var newUser = new User
+            {
+                Email = Email,
+                Password = Password,
+                Username = Email,
+                RegistrationDate = DateTime.UtcNow
+            };
+
+            if (_databaseService.AddUser(newUser))
+            {
+                await Application.Current.MainPage.DisplayAlert("Успех", "Регистрация завершена", "OK");
+                Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось зарегистрироваться", "OK");
+            }
+        }
+
+        private async Task NavigateToLogin() => Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
+
+
+        public ICommand RegisterCmnd { get; }
+        public ICommand LoginCmnd { get; }
     }
-    public ICommand RegisterCmnd { get; }
 }

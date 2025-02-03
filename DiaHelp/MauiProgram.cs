@@ -3,6 +3,7 @@ using DiaHelp.Interface;
 using DiaHelp.Services;
 using DiaHelp.View;
 using DiaHelp.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Platform;
 
@@ -20,10 +21,16 @@ namespace DiaHelp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            builder.Services.AddDbContext<ApplicationContext>(options =>
+            {
+                options.UseSqlite($"FileName={Path.Combine(FileSystem.AppDataDirectory, "DiaHelpTest.db")}");
+            });
             builder.Services.AddDbContext<ApplicationContext>();
             builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
+            builder.Services.AddTransient<IWindowService, WindowService>();
 
             // Регистрация ViewModels
+            builder.Services.AddTransient<MainViewModel>();
             builder.Services.AddTransient<RegistrationViewModel>();
             builder.Services.AddTransient<LoginViewModel>();
 
