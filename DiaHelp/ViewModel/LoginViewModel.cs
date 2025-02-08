@@ -34,7 +34,7 @@ namespace DiaHelp.ViewModel
         }
 
 
-        private async Task Login()//вхоgд
+        private async Task Login()
         {
             var user = _databaseService.GetUser(Username);
             if (user != null && BCrypt.Net.BCrypt.Verify(Password, user.Password))

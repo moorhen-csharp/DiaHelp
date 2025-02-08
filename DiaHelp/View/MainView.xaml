@@ -3,35 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.MainView"
              Title="MainView">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <Grid RowDefinitions="*,Auto" >
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Label Text="Привет" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" Grid.RowSpan="3" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
+       
+            <Label Text="Расчет коррекционного инсулина" TextColor="DimGray" FontSize="20" FontAttributes="Bold" 
+                   HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,20"/>
+
+        
+            <Label Text="Текущий уровень глюкозы:" FontSize="14" VerticalOptions="Center"  Grid.Row="1" Grid.Column="0" Margin="5"/>
+            <Entry Text="{Binding CurrentGlucose}" Keyboard="Numeric"
+                   WidthRequest="120" FontSize="14" TextColor="#FF555555"  BackgroundColor="#FFF0F0F0"
+                   Grid.Row="1" Grid.Column="1" Margin="5"/>
 
 
+            <Label Text="Целевой уровень глюкозы:" FontSize="14" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Margin="5"/>
+            <Entry Text="{Binding TargetGlucose}" Keyboard="Numeric"
+                   WidthRequest="120" FontSize="14" TextColor="#FF555555" BackgroundColor="#FFF0F0F0"
+                   Grid.Row="2" Grid.Column="1" Margin="5" />
 
+
+            <Label Text="Коэффициент инсулина:" FontSize="14" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Margin="5"/>
+            <Entry Text="{Binding ISF}" Keyboard="Numeric"
+                   WidthRequest="120" FontSize="14"  TextColor="#FF555555" BackgroundColor="#FFF0F0F0"
+                   Grid.Row="3" Grid.Column="1" Margin="5" />
+
+          
+            <Button Text="Рассчитать" FontSize="14" FontAttributes="Bold" TextColor="White"
+                    WidthRequest="150" HeightRequest="40" HorizontalOptions="Center" Grid.Row="4" Grid.ColumnSpan="2" Margin="5"
+                    Command="{Binding CalculateCommand}"/>
+
+        
+            <Label Text="Коррекционный инсулин:" FontSize="17" Grid.Row="5" Grid.Column="0" Margin="5"/>
+            <Label Text="{Binding Result}" FontSize="16" FontAttributes="Bold"
+                   HorizontalOptions="Start" VerticalOptions="Center"  Grid.Row="5" Grid.Column="1" Margin="5"/>
+        </Grid>
+
+        <!-- NAVBAR -->
+        <Grid Grid.Row="1" BackgroundColor="BlueViolet" HeightRequest="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+      
+            <Button Text="Главная" FontSize="14" TextColor="White" BackgroundColor="Transparent"
+                    BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
+                    Grid.Column="0"/>
+
+        
+            <Button Text="Настройки" FontSize="14" TextColor="White" BackgroundColor="Transparent"
+                    BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
+                    Grid.Column="1"/>
+
+     
+            <Button Text="Профиль" FontSize="14" TextColor="White" BackgroundColor="Transparent"
+                    BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
+                    Grid.Column="2"/>
+        </Grid>
     </Grid>
 </ContentPage>

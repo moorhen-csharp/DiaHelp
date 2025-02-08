@@ -20,7 +20,7 @@ namespace DiaHelp.Services
             {
                 if (context.Users.Any(u => u.Email == userModel.Email))
                 {
-                    return false; // Email уже существует
+                    return false; 
                 }
 
                 userModel.Password = BCrypt.Net.BCrypt.HashPassword(userModel.Password);
