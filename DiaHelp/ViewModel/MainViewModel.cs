@@ -1,4 +1,7 @@
-﻿namespace DiaHelp.ViewModel
+﻿using DiaHelp.Interface;
+using System.Windows.Input;
+
+namespace DiaHelp.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
@@ -7,10 +10,13 @@
         private double _isf;
         private double _currentValue;
         private string _result;
+        private IWindowService _windowService;
 
-        public MainViewModel()
+        public MainViewModel(IWindowService windowService)
         {
+            _windowService = windowService;
             CalculateCommand = new Command(CalculateInsulin);
+            SugarPage = new Command(SugarGo);
         }
         public double CurrentGlucose
         {
@@ -70,6 +76,8 @@
             }
         }
 
+        
+
         // Команда для расчета
         private async void CalculateInsulin()
         {
@@ -113,6 +121,13 @@
             CurrentValue = finalValue; // Устанавливаем окончательное значение
         }
 
+        private async void SugarGo()
+        {
+            Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
+        }
+
+        
+        public ICommand SugarPage { get; }
         public Command CalculateCommand { get; }
     }
 }

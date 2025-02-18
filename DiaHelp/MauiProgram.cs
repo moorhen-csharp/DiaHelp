@@ -33,10 +33,12 @@ namespace DiaHelp
             builder.Services.AddTransient<MainViewModel>();
             builder.Services.AddTransient<RegistrationViewModel>();
             builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<SugarNoteViewModel>();
 
             // Регистрация страниц
             builder.Services.AddTransient<RegistrationView>();
             builder.Services.AddTransient<LoginView>();
+            builder.Services.AddTransient<SugarNoteView>();
 
 
 #if DEBUG

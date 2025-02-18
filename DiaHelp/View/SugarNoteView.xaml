@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DiaHelp.View.SugarNoteView"
+             Title="SugarNoteView">
+    <StackLayout Padding="20">
+        <!-- Поля для ввода данных -->
+        <Entry x:Name="SugarLevelEntry"
+               Placeholder="Уровень сахара"
+               Text="{Binding SugarLevel}"
+               Keyboard="Numeric" />
+
+        
+
+        <Picker x:Name="MealTypePicker"
+                Title="Тип измерения"
+                SelectedItem="{Binding MealType}">
+            <Picker.Items>
+                <x:String>До еды</x:String>
+                <x:String>После еды</x:String>
+                <x:String>Натощак</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Button Text="Сохранить"
+                Command="{Binding AddSugarNoteCommand}"
+                BackgroundColor="MediumSeaGreen"
+                TextColor="White" />
+
+        <!-- Список записей -->
+
+
+        <CollectionView ItemsSource="{Binding SugarNotes}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Gray" StrokeThickness="1" Margin="3">
+                        <Grid Padding="10">
+                            <StackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="Сахар: "/>
+                                    <Label Text="{Binding SugarLevel}"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout>
+                                    <Label Text="Дата: "/>
+                                    <Label Text="{Binding Date}"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout>
+                                    <Label Text="Тип: "/>
+                                    <Label Text="{Binding MeasurementTime}"/>
+                                </HorizontalStackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

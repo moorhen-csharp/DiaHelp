@@ -12,6 +12,7 @@ namespace DiaHelp.Services
 {
     public class DatabaseService(ApplicationContext context) : IDatabaseService
     {
+       //ЮЗЕР
         public List<User> GetAllUser() => context.Users.ToList();
         public User GetUser(string username) => context.Users.FirstOrDefault(p => p.Username == username);
         public bool AddUser(User userModel)
@@ -35,5 +36,22 @@ namespace DiaHelp.Services
             }
         }
 
+        //САХАР
+        public bool AddSugarNote(SugarModel sugarNote)
+        {
+            try
+            {
+                context.SugarNotes.Add(sugarNote);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public List<SugarModel> GetAllSugarNotes() => context.SugarNotes.ToList();
     }
 }

@@ -13,5 +13,8 @@ namespace DiaHelp.Interface
         List<User> GetAllUser();
         User GetUser(string username);
         bool AddUser(User userModel);
+
+        List<SugarModel> GetAllSugarNotes();
+        bool AddSugarNote(SugarModel sugarNote);
     }
 }
