@@ -1,5 +1,4 @@
 ﻿using DiaHelp.Interface;
-using DiaHelp.Model;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -39,6 +38,7 @@ namespace DiaHelp.ViewModel
             var user = _databaseService.GetUser(Username);
             if (user != null && BCrypt.Net.BCrypt.Verify(Password, user.Password))
             {
+                Preferences.Set("IsUserLoggedIn", true);
                 Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
             }
             else

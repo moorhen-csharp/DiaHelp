@@ -1,4 +1,5 @@
 ﻿using DiaHelp.Interface;
+using DiaHelp.Services;
 using DiaHelp.ViewModel;
 
 namespace DiaHelp
@@ -8,9 +9,19 @@ namespace DiaHelp
         public App(IWindowService windowService)
         {
             InitializeComponent();
-            MainPage = windowService.GetAndCreateContentPage<LoginViewModel>().View;
-        }
+    
+            bool isUserLoggedIn = Preferences.Get("IsUserLoggedIn", false);
 
-        
+            if (isUserLoggedIn)
+            {
+                // если вошел
+                MainPage = windowService.GetAndCreateContentPage<MainViewModel>().View;
+            }
+            else
+            {
+                // если не вошел
+                MainPage = windowService.GetAndCreateContentPage<LoginViewModel>().View;
+            }
+        } 
     }
 }

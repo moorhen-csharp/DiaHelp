@@ -1,7 +1,5 @@
 ﻿using DiaHelp.Interface;
 using DiaHelp.Model;
-using DiaHelp.Services;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -59,6 +57,7 @@ namespace DiaHelp.ViewModel
 
             if (_databaseService.AddUser(newUser))
             {
+                Preferences.Set("IsUserLoggedIn", true);
                 await Application.Current.MainPage.DisplayAlert("Успех", "Регистрация завершена", "OK");
                 Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
             }

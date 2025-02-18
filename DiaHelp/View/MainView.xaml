@@ -60,17 +60,17 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-      
+
             <Button Text="Главная" FontSize="14" TextColor="White" BackgroundColor="Transparent"
                     BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
                     Grid.Column="0"/>
 
-        
+
             <Button Text="Настройки" FontSize="14" TextColor="White" BackgroundColor="Transparent"
                     BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
                     Grid.Column="1"/>
 
-     
+
             <Button Text="Профиль" FontSize="14" TextColor="White" BackgroundColor="Transparent"
                     BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
                     Grid.Column="2"/>
