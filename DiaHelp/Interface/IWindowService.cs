@@ -1,5 +1,4 @@
-﻿
-using DiaHelp.Model;
+﻿using DiaHelp.Model;
 
 namespace DiaHelp.Interface
 {

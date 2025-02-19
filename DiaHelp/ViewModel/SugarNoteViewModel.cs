@@ -60,10 +60,7 @@ namespace DiaHelp.ViewModel
             {
                 if (_databaseService.AddSugarNote(sugarNote)) 
                 {
-                    SugarNotes.Insert(0, sugarNote);
-
-                    
-                    
+                    SugarNotes.Insert(0, sugarNote);   
                 }
                 else
                 {

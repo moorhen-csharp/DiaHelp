@@ -37,6 +37,7 @@ namespace DiaHelp.Services
         }
 
         //САХАР
+        public List<SugarModel> GetAllSugarNotes() => context.SugarNotes.ToList();
         public bool AddSugarNote(SugarModel sugarNote)
         {
             try
@@ -51,7 +52,5 @@ namespace DiaHelp.Services
                 return false;
             }
         }
-
-        public List<SugarModel> GetAllSugarNotes() => context.SugarNotes.ToList();
     }
 }
