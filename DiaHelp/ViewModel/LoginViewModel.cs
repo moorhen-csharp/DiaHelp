@@ -9,6 +9,7 @@ namespace DiaHelp.ViewModel
         private readonly IWindowService _windowService;
         private string _username;
         private string _password;
+
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
 
@@ -16,8 +17,8 @@ namespace DiaHelp.ViewModel
         {
             _databaseService = databaseService;
             _windowService = windowService;
-            LoginCommand = new RelayCommand(async _ => await Login());
-            RegisterCommand = new RelayCommand(async _ => await NavigateToRegister());
+            LoginCommand = new RelayCommand(Login);
+            RegisterCommand = new RelayCommand(NavigateToRegister);
         }
 
         public string Username
@@ -33,7 +34,7 @@ namespace DiaHelp.ViewModel
         }
 
 
-        private async Task Login()
+        private async void Login(object parameter)
         {
             var user = _databaseService.GetUser(Username);
             if (user != null && BCrypt.Net.BCrypt.Verify(Password, user.Password))
@@ -47,6 +48,6 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        private async Task NavigateToRegister() => Application.Current.MainPage = _windowService.GetAndCreateContentPage<RegistrationViewModel>().View;
+        private async void NavigateToRegister(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<RegistrationViewModel>().View;
     }
 }

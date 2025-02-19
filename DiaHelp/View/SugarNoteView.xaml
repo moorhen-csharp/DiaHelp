@@ -3,58 +3,85 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.SugarNoteView"
              Title="SugarNoteView">
-    <StackLayout Padding="20">
-        <!-- Поля для ввода данных -->
-        <Entry x:Name="SugarLevelEntry"
-               Placeholder="Уровень сахара"
-               Text="{Binding SugarLevel}"
-               Keyboard="Numeric" />
 
-        
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*, Auto">
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Picker x:Name="MealTypePicker"
-                Title="Тип измерения"
-                SelectedItem="{Binding MealType}">
-            <Picker.Items>
-                <x:String>До еды</x:String>
-                <x:String>После еды</x:String>
-                <x:String>Натощак</x:String>
-            </Picker.Items>
-        </Picker>
+            <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="2" Spacing="10">
+                <Entry x:Name="SugarLevelEntry" Placeholder="Уровень сахара" Text="{Binding SugarLevel}" Keyboard="Numeric" />
 
-        <Button Text="Сохранить"
-                Command="{Binding AddSugarNoteCommand}"
-                BackgroundColor="MediumSeaGreen"
-                TextColor="White" />
+                <Picker x:Name="MealTypePicker" Title="Тип измерения" SelectedItem="{Binding MealType}">
+                    <Picker.Items>
+                        <x:String>До еды</x:String>
+                        <x:String>После еды</x:String>
+                        <x:String>Натощак</x:String>
+                    </Picker.Items>
+                </Picker>
 
-        <!-- Список записей -->
+                <Button Text="Сохранить" Command="{Binding AddSugarNoteCommand}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
+
+            </VerticalStackLayout>
 
 
-        <CollectionView ItemsSource="{Binding SugarNotes}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border Stroke="Gray" StrokeThickness="1" Margin="3">
-                        <Grid Padding="10">
-                            <StackLayout>
-                                <HorizontalStackLayout>
-                                    <Label Text="Сахар: "/>
-                                    <Label Text="{Binding SugarLevel}"/>
-                                </HorizontalStackLayout>
+            <CollectionView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Grid.RowSpan="7" VerticalOptions="Start" ItemsSource="{Binding SugarNotes}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="Gray" StrokeThickness="1" Margin="3">
+                            <Grid Padding="10">
+                                <StackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label Text="Сахар: "/>
+                                        <Label Text="{Binding SugarLevel}"/>
+                                    </HorizontalStackLayout>
 
-                                <HorizontalStackLayout>
-                                    <Label Text="Дата: "/>
-                                    <Label Text="{Binding Date}"/>
-                                </HorizontalStackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label Text="Дата: "/>
+                                        <Label Text="{Binding Date}"/>
+                                    </HorizontalStackLayout>
 
-                                <HorizontalStackLayout>
-                                    <Label Text="Тип: "/>
-                                    <Label Text="{Binding MeasurementTime}"/>
-                                </HorizontalStackLayout>
-                            </StackLayout>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label Text="Тип: "/>
+                                        <Label Text="{Binding MeasurementTime}"/>
+                                    </HorizontalStackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+
+        <Grid Grid.Row="1" BackgroundColor="BlueViolet" HeightRequest="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Главная" Command="{Binding MainPage}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+
+            <Button Text="Настройки" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+
+            <Button Text="Сахар" Command="{Binding SugarPage}" FontSize="14" TextColor="White" BackgroundColor="Transparent"  BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+            
+        </Grid>
+    </Grid>
 </ContentPage>

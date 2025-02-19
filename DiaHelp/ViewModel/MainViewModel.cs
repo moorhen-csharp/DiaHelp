@@ -79,7 +79,7 @@ namespace DiaHelp.ViewModel
         
 
         // Команда для расчета
-        private async void CalculateInsulin()
+        private async void CalculateInsulin(object parameter)
         {
             try
             {
@@ -121,13 +121,10 @@ namespace DiaHelp.ViewModel
             CurrentValue = finalValue; // Устанавливаем окончательное значение
         }
 
-        private async void SugarGo()
-        {
-            Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
-        }
+        private void SugarGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
 
-        
+
         public ICommand SugarPage { get; }
-        public Command CalculateCommand { get; }
+        public ICommand CalculateCommand { get; }
     }
 }

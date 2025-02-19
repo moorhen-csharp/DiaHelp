@@ -15,10 +15,9 @@ namespace DiaHelp.ViewModel
         public RegistrationViewModel(IDatabaseService databaseService, IWindowService windowService)
         {
             _windowService = windowService;
-
             _databaseService = databaseService;
-            RegisterCmnd = new RelayCommand(async _ => await Register());
-            LoginCmnd = new RelayCommand(async _ => await NavigateToLogin());
+            RegisterCmnd = new RelayCommand(Register);
+            LoginCmnd = new RelayCommand(NavigateToLogin);
         }
 
         public string Email
@@ -39,7 +38,7 @@ namespace DiaHelp.ViewModel
             set => SetProperty(ref _confirmPassword, value);
         }
 
-        private async Task Register()
+        private async void Register(object parameter)
         {
             if (Password != ConfirmPassword)
             {
@@ -67,7 +66,7 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        private async Task NavigateToLogin() => Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
+        private async void NavigateToLogin(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
 
 
         public ICommand RegisterCmnd { get; }

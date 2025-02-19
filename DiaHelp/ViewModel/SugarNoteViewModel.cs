@@ -1,35 +1,29 @@
 ﻿using DiaHelp.Interface;
 using DiaHelp.Model;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DiaHelp.ViewModel
 {
     public class SugarNoteViewModel : BaseViewModel
     {
+        private IWindowService _windowService;
         private readonly IDatabaseService _databaseService;
         private readonly ILogger<SugarNoteViewModel> _logger;
-
         private decimal _sugarLevel { get; set; }
         public string MeasurementTime { get; set; }
         public string _mealType { get; set; }
-
         public ObservableCollection<SugarModel> SugarNotes { get; set; }
 
-        public SugarNoteViewModel(IDatabaseService databaseService, ILogger<SugarNoteViewModel> logger)
+        public SugarNoteViewModel(IDatabaseService databaseService, ILogger<SugarNoteViewModel> logger, IWindowService windowService)
         {
+            _windowService = windowService;
             _databaseService = databaseService;
             _logger = logger;
             SugarNotes = new ObservableCollection<SugarModel>();
-            AddSugarNoteCommand = new Command(async () => await AddSugarNote());
-
+            AddSugarNoteCommand = new RelayCommand(AddSugarNote);
+            MainPage = new RelayCommand(MainGo);
             LoadSugarNotes();
         }
 
@@ -53,7 +47,7 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        public async Task AddSugarNote()
+        public async void AddSugarNote(object parameter)
         {
             var sugarNote = new SugarModel
             {
@@ -96,13 +90,12 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        //private void ResetForm()
-        //{
-        //    SugarLevel =0;
-        //    MeasurementTime = string.Empty;
-           
-        //}
+        private void MainGo(object parametr)
+        {
+            Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
+        }
 
+        public ICommand MainPage { get; }
         public ICommand AddSugarNoteCommand { get; }
     }
 }
