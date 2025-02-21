@@ -5,7 +5,6 @@ using DiaHelp.View;
 using DiaHelp.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Platform;
 
 namespace DiaHelp
 {

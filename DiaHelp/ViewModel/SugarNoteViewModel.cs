@@ -24,6 +24,7 @@ namespace DiaHelp.ViewModel
             SugarNotes = new ObservableCollection<SugarModel>();
             AddSugarNoteCommand = new RelayCommand(AddSugarNote);
             MainPage = new RelayCommand(MainGo);
+            Clear = new RelayCommand(ClearNote);
             LoadSugarNotes();
         }
 
@@ -47,33 +48,43 @@ namespace DiaHelp.ViewModel
             }
         }
 
+        public async void ClearNote(object parametr)
+        {
+            if (_databaseService.ClearAllSugarNotes())
+            {
+                SugarNotes.Clear();
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось очистить записи", "OK");
+            }
+        }
+
         public async void AddSugarNote(object parameter)
         {
             var sugarNote = new SugarModel
             {
                 SugarLevel = SugarLevel,
                 MeasurementTime = MealType,
-                Date = DateTime.Now 
+                Date = DateTime.Now
             };
 
-            try
+            if (SugarLevel <= 0)
             {
-                if (_databaseService.AddSugarNote(sugarNote)) 
-                {
-                    SugarNotes.Insert(0, sugarNote);   
-                }
-                else
-                {
-                    _logger.LogError("Не удалось добавить запись о сахаре.");
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Ошибка при добавлении записи.");
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Уровень сахара не может быть меньше или равен 0.", "ОК");
             }
 
-            SugarLevel = 0;
-            MealType = string.Empty;
+            else if (string.IsNullOrEmpty(MealType))
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста введите тип измерения.", "ОК");
+            }
+
+            else if (_databaseService.AddSugarNote(sugarNote))
+            {
+                SugarNotes.Insert(0, sugarNote);
+                SugarLevel = 0;
+                MealType = string.Empty;
+            }
         }
 
 
@@ -87,11 +98,9 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        private void MainGo(object parametr)
-        {
-            Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
-        }
+        private void MainGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
 
+        public ICommand Clear { get; }
         public ICommand MainPage { get; }
         public ICommand AddSugarNoteCommand { get; }
     }

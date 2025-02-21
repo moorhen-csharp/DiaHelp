@@ -16,5 +16,6 @@ namespace DiaHelp.Interface
 
         List<SugarModel> GetAllSugarNotes();
         bool AddSugarNote(SugarModel sugarNote);
+        bool ClearAllSugarNotes();
     }
 }

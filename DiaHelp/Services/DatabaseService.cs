@@ -1,18 +1,28 @@
 ﻿using DiaHelp.Infrastructure;
 using DiaHelp.Interface;
 using DiaHelp.Model;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DiaHelp.Services
 {
     public class DatabaseService(ApplicationContext context) : IDatabaseService
     {
-       //ЮЗЕР
+        public bool ClearAllSugarNotes()
+        {
+            try
+            {
+                var allNotes = context.SugarNotes.ToList();
+                context.SugarNotes.RemoveRange(allNotes);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при удалении записей: {ex.Message}");
+                return false;
+            }
+        }
+        //ЮЗЕР
         public List<User> GetAllUser() => context.Users.ToList();
         public User GetUser(string username) => context.Users.FirstOrDefault(p => p.Username == username);
         public bool AddUser(User userModel)
@@ -21,7 +31,7 @@ namespace DiaHelp.Services
             {
                 if (context.Users.Any(u => u.Email == userModel.Email))
                 {
-                    return false; 
+                    return false;
                 }
 
                 userModel.Password = BCrypt.Net.BCrypt.HashPassword(userModel.Password);
@@ -42,6 +52,7 @@ namespace DiaHelp.Services
         {
             try
             {
+                sugarNote.Id = context.SugarNotes.Count() == 0 ? 1 : context.SugarNotes.Max(p => p.Id) + 1;
                 context.SugarNotes.Add(sugarNote);
                 context.SaveChanges();
                 return true;

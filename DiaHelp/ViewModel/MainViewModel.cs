@@ -1,4 +1,5 @@
-﻿using DiaHelp.Interface;
+﻿using BenchmarkDotNet.Attributes;
+using DiaHelp.Interface;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -16,7 +17,7 @@ namespace DiaHelp.ViewModel
         {
             _windowService = windowService;
             CalculateCommand = new Command(CalculateInsulin);
-            SugarPage = new Command(SugarGo);
+            SugarPage = new RelayCommand(SugarGo);
         }
         public double CurrentGlucose
         {
@@ -47,7 +48,6 @@ namespace DiaHelp.ViewModel
                 OnPropertyChanged();
             }
         }
-        // Свойство CurrentValue для анимации
         public double CurrentValue
         {
             get => _currentValue;
@@ -57,12 +57,11 @@ namespace DiaHelp.ViewModel
                 {
                     _currentValue = value;
                     OnPropertyChanged(nameof(CurrentValue));
-                    Result = Math.Round(value, 2).ToString(); // Обновляем результат
+                    Result = Math.Round(value, 2).ToString();
                 }
             }
         }
 
-        // Свойство для отображения результата
         public string Result
         {
             get => _result;
@@ -76,23 +75,27 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        
 
-        // Команда для расчета
+
         private async void CalculateInsulin(object parameter)
         {
-            try
+            if (double.TryParse(CurrentGlucose.ToString(), out double currentGlucose) && double.TryParse(TargetGlucose.ToString(), out double targetGlucose) && double.TryParse(ISF.ToString(), out double isf))
             {
-          
-                if (double.TryParse(CurrentGlucose.ToString(), out double currentGlucose) &&
-                    double.TryParse(TargetGlucose.ToString(), out double targetGlucose) &&
-                    double.TryParse(ISF.ToString(), out double isf))
+                if (currentGlucose <= 0)
                 {
-                    if (isf == 0)
-                    {
-                        throw new ArgumentException("Корректирующий коэффициент (ISF) не может быть равен нулю.");
-                    }
+                    await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, введите текущий уровень глюкозы.", "ОК");
+                }
+                else if (targetGlucose <= 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, введите целевой уровень глюкозы.", "ОК");
+                }
+                else if (isf <= 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, введите коэффициент инсулина.", "ОК");
+                }
 
+                else if (currentGlucose > 0 && targetGlucose > 0 && isf > 0)
+                {
                     double correctionInsulin = (currentGlucose - targetGlucose) / isf;
 
                     if (correctionInsulin < 0)
@@ -100,25 +103,20 @@ namespace DiaHelp.ViewModel
                         correctionInsulin = 0;
                     }
 
-                    // Анимация результата
                     await AnimateResult(correctionInsulin);
                 }
-            }
-            catch (Exception ex)
-            {
-                Result = $"Ошибка: {ex.Message}";
             }
         }
 
         private async Task AnimateResult(double finalValue)
         {
-            double step = finalValue / 50; // Шаг увеличения
+            double step = finalValue / 50; 
             for (double i = 0; i <= finalValue; i += step)
             {
-                CurrentValue = i; // Обновляем текущее значение
-                await Task.Delay(30); // Задержка для создания эффекта анимации
+                CurrentValue = i;
+                await Task.Delay(30);
             }
-            CurrentValue = finalValue; // Устанавливаем окончательное значение
+            CurrentValue = finalValue;
         }
 
         private void SugarGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;

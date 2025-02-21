@@ -29,7 +29,7 @@
                    WidthRequest="120" FontSize="14" TextColor="#FF555555"  BackgroundColor="#FFF0F0F0"
                    Grid.Row="1" Grid.Column="1" Margin="5"/>
 
-
+            
             <Label Text="Целевой уровень глюкозы:" FontSize="14" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Margin="5"/>
             <Entry Text="{Binding TargetGlucose}" Keyboard="Numeric"
                    WidthRequest="120" FontSize="14" TextColor="#FF555555" BackgroundColor="#FFF0F0F0"
