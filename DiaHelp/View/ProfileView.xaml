@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DiaHelp.View.ProfileView"
+             Title="ProfileView">
+    <Grid RowDefinitions="*,Auto" >
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Button WidthRequest="160" VerticalOptions="End" HeightRequest="50" Text="Выйти из аккаунта" Command="{Binding LogoutCommand}" Background="Blue" TextColor="White"/>
+
+            <!-- NAVBAR -->
+        <Grid Grid.Row="1" BackgroundColor="BlueViolet" HeightRequest="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <Button Text="Главная" FontSize="14" TextColor="White" BackgroundColor="Transparent"
+                BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
+                Grid.Column="0"/>
+
+
+            <Button Text="Настройки" FontSize="14" TextColor="White" BackgroundColor="Transparent"
+                BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
+                Grid.Column="1"/>
+
+
+            <Button Text="Сахар" Command="{Binding SugarPage}" FontSize="14" TextColor="White" BackgroundColor="Transparent"
+                BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
+                Grid.Column="2"/>
+
+            <Button Text="Профиль" Command="{Binding Profile}" FontSize="14" TextColor="White" BackgroundColor="Transparent"
+                BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"
+                Grid.Column="3"/>
+        </Grid>
+    </Grid>
+</ContentPage>

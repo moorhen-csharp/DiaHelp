@@ -46,7 +46,7 @@ namespace DiaHelp.ViewModel
                 return;
             }
 
-            var newUser = new User
+            var newUser = new UserModel
             {
                 Email = Email,
                 Password = Password,

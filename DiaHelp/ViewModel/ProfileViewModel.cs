@@ -1,0 +1,24 @@
+﻿using DiaHelp.Interface;
+using System.Windows.Input;
+
+namespace DiaHelp.ViewModel
+{
+    public class ProfileViewModel : BaseViewModel
+    {
+        private readonly IWindowService _windowService;
+
+        public ProfileViewModel(IWindowService windowService)
+        {
+            _windowService = windowService;
+            LogoutCommand = new RelayCommand(Logout);
+        }
+
+        public void Logout(object parametr)
+        {
+            Preferences.Set("IsUserLoggedIn", false);
+            Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
+        }
+
+        public ICommand LogoutCommand { get; }
+    }
+}

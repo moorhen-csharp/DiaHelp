@@ -10,9 +10,9 @@ namespace DiaHelp.Interface
     public interface IDatabaseService
     {
 
-        List<User> GetAllUser();
-        User GetUser(string username);
-        bool AddUser(User userModel);
+        List<UserModel> GetAllUser();
+        UserModel GetUser(string username);
+        bool AddUser(UserModel userModel);
 
         List<SugarModel> GetAllSugarNotes();
         bool AddSugarNote(SugarModel sugarNote);

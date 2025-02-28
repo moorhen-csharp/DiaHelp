@@ -1,6 +1,5 @@
 ﻿using DiaHelp.Interface;
 using DiaHelp.Model;
-using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -10,17 +9,15 @@ namespace DiaHelp.ViewModel
     {
         private IWindowService _windowService;
         private readonly IDatabaseService _databaseService;
-        private readonly ILogger<SugarNoteViewModel> _logger;
         private decimal _sugarLevel { get; set; }
         public string MeasurementTime { get; set; }
         public string _mealType { get; set; }
         public ObservableCollection<SugarModel> SugarNotes { get; set; }
 
-        public SugarNoteViewModel(IDatabaseService databaseService, ILogger<SugarNoteViewModel> logger, IWindowService windowService)
+        public SugarNoteViewModel(IDatabaseService databaseService, IWindowService windowService)
         {
             _windowService = windowService;
             _databaseService = databaseService;
-            _logger = logger;
             SugarNotes = new ObservableCollection<SugarModel>();
             AddSugarNoteCommand = new RelayCommand(AddSugarNote);
             MainPage = new RelayCommand(MainGo);

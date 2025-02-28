@@ -10,10 +10,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="40"/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -24,7 +24,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="3" Spacing="10">
+
+            <Button Text="очистить" Grid.Row="0" Grid.Column="4" Command="{Binding Clear}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
+            
+            <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3" Spacing="10">
                 <Entry x:Name="SugarLevelEntry" Placeholder="Уровень сахара" Text="{Binding SugarLevel}" Keyboard="Numeric" />
 
                 <Picker x:Name="MealTypePicker" Title="Тип измерения" SelectedItem="{Binding MealType}">
@@ -36,8 +39,7 @@
                 </Picker>
 
                 <Button Text="Сохранить" Command="{Binding AddSugarNoteCommand}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
-                <Button Text="очистить" Command="{Binding Clear}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
-
+                
             </VerticalStackLayout>
 
 
