@@ -26,24 +26,33 @@
 
 
             <Button Text="очистить" Grid.Row="0" Grid.Column="4" Command="{Binding Clear}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
-            
-            <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3" Spacing="10">
-                <Entry x:Name="SugarLevelEntry" Placeholder="Уровень сахара" Text="{Binding SugarLevel}" Keyboard="Numeric" />
 
-                <Picker x:Name="MealTypePicker" Title="Тип измерения" SelectedItem="{Binding MealType}">
+            <Grid Grid.Row="8" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Text="+" WidthRequest="60"  Command="{Binding AddSugarNoteCommand}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
+
+                <Entry Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"   Placeholder="Уровень сахара: " Text="{Binding SugarLevel}" Keyboard="Numeric" />
+
+                <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Title="Тип измерения" SelectedItem="{Binding MealType}">
                     <Picker.Items>
                         <x:String>До еды</x:String>
                         <x:String>После еды</x:String>
                         <x:String>Натощак</x:String>
                     </Picker.Items>
                 </Picker>
+            </Grid>
 
-                <Button Text="Сохранить" Command="{Binding AddSugarNoteCommand}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
-                
-            </VerticalStackLayout>
-
-
-            <CollectionView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Grid.RowSpan="7" VerticalOptions="Start" ItemsSource="{Binding SugarNotes}">
+            <CollectionView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="5" VerticalOptions="Start" ItemsSource="{Binding SugarNotes}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border Stroke="Gray" StrokeThickness="1" Margin="3">

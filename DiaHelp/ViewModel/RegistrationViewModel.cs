@@ -1,5 +1,7 @@
 ﻿using DiaHelp.Interface;
 using DiaHelp.Model;
+using DiaHelp.Services;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -40,9 +42,27 @@ namespace DiaHelp.ViewModel
 
         private async void Register(object parameter)
         {
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Введите email", "OK");
+                return;
+            }
+
+            if (!IsValidEmail(Email))
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Некорректный формат email", "OK");
+                return;
+            }
+
             if (Password != ConfirmPassword)
             {
                 await Application.Current.MainPage.DisplayAlert("Ошибка", "Пароли не совпадают", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword))
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Введите пароль и подтвердите его", "OK");
                 return;
             }
 
@@ -56,14 +76,19 @@ namespace DiaHelp.ViewModel
 
             if (_databaseService.AddUser(newUser))
             {
-                Preferences.Set("IsUserLoggedIn", true);
                 await Application.Current.MainPage.DisplayAlert("Успех", "Регистрация завершена", "OK");
                 Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось зарегистрироваться", "OK");
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось зарегистрироваться, возможно аккаунт уже существует", "OK");
             }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            var regex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, regex);
         }
 
         private async void NavigateToLogin(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<LoginViewModel>().View;
