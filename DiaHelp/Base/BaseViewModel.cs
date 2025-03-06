@@ -20,10 +20,4 @@ public class BaseViewModel : INotifyPropertyChanged
         OnPropertyChanged(propertyName);
         return true;
     }
-    public ICommand GoBackCommand => new RelayCommand(async _ => await GoBack());
-
-    protected virtual async Task GoBack()
-    {
-        await Shell.Current.GoToAsync("..");
-    }
 }

@@ -1,9 +1,4 @@
 ﻿using DiaHelp.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DiaHelp.Interface
 {
@@ -16,6 +11,7 @@ namespace DiaHelp.Interface
 
         List<SugarModel> GetAllSugarNotes();
         bool AddSugarNote(SugarModel sugarNote);
+
         bool ClearAllSugarNotes();
     }
 }
