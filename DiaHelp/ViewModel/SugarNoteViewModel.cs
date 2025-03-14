@@ -22,6 +22,7 @@ namespace DiaHelp.ViewModel
             AddSugarNoteCommand = new RelayCommand(AddSugarNote);
             MainPage = new RelayCommand(MainGo);
             Clear = new RelayCommand(ClearNote);
+            SugarAverage = new RelayCommand(Average);
             LoadSugarNotes();
         }
 
@@ -84,6 +85,10 @@ namespace DiaHelp.ViewModel
             }
         }
 
+        public void Average(object parametr)
+        {
+            Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarAverageLevelViewModel>().View;
+        }
 
         private void LoadSugarNotes()
         {
@@ -100,5 +105,6 @@ namespace DiaHelp.ViewModel
         public ICommand Clear { get; }
         public ICommand MainPage { get; }
         public ICommand AddSugarNoteCommand { get; }
+        public ICommand SugarAverage { get; }
     }
 }

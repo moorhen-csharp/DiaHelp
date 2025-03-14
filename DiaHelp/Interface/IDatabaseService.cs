@@ -13,5 +13,7 @@ namespace DiaHelp.Interface
         bool AddSugarNote(SugarModel sugarNote);
 
         bool ClearAllSugarNotes();
+
+        Task<List<SugarModel>> GetSugarNotesByPeriod(DateTime startDate, DateTime endDate);
     }
 }

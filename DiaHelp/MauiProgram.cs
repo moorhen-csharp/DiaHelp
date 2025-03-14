@@ -34,6 +34,8 @@ namespace DiaHelp
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<SugarNoteViewModel>();
             builder.Services.AddTransient<ProfileViewModel>();
+            builder.Services.AddTransient<SugarAverageLevelViewModel>();
+
 
 
             // Регистрация страниц
@@ -42,6 +44,8 @@ namespace DiaHelp
             builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<SugarNoteView>();
             builder.Services.AddTransient<ProfileView>();
+            builder.Services.AddTransient<SugarAverageLevelView>();
+
 
 
 

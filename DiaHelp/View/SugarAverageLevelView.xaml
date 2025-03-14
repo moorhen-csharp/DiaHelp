@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DiaHelp.View.SugarAverageLevelView"
+             Title="SugarAverageLevelView">
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" Padding="20">
+                <Label Text="Выберите период:"
+                       FontSize="16"/>
+
+                <Picker Title="Период"
+                        ItemsSource="{Binding Periods}"
+                        SelectedItem="{Binding SelectedPeriod}"
+                        Margin="0,10"/>
+
+                <Label Text="Ваш средний уровень сахара в крови:" HorizontalOptions="Center" FontSize="15"/>
+
+                <Label Text="{Binding Average, StringFormat=' {0:F1} ммоль/л'}"
+                       FontSize="24"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid BackgroundColor="BlueViolet" 
+              HeightRequest="60" VerticalOptions="End">
+            <Button Text="Назад"
+                    Command="{Binding MainPageCommand}"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentPage>

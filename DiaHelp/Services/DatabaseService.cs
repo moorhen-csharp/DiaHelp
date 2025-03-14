@@ -1,6 +1,7 @@
 ﻿using DiaHelp.Infrastructure;
 using DiaHelp.Interface;
 using DiaHelp.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace DiaHelp.Services
@@ -61,6 +62,21 @@ namespace DiaHelp.Services
             {
                 Debug.WriteLine(ex.Message);
                 return false;
+            }
+        }
+
+        public async Task<List<SugarModel>> GetSugarNotesByPeriod(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return await context.SugarNotes
+                    .Where(n => n.Date >= startDate && n.Date <= endDate)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка: {ex.Message}");
+                return [];
             }
         }
     }

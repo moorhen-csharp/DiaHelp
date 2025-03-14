@@ -26,6 +26,8 @@
 
 
             <Button Text="очистить" Grid.Row="0" Grid.Column="4" Command="{Binding Clear}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
+            <Button Text="AVG" Grid.Row="0" Grid.Column="1" Command="{Binding SugarAverage}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
+
 
             <Grid Grid.Row="8" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4">
                 <Grid.RowDefinitions>
