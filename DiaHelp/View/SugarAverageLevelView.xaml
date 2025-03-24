@@ -26,7 +26,7 @@
         <Grid BackgroundColor="BlueViolet" 
               HeightRequest="60" VerticalOptions="End">
             <Button Text="Назад"
-                    Command="{Binding MainPageCommand}"
+                    Command="{Binding BackPageCommand}"
                     TextColor="White"
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center"

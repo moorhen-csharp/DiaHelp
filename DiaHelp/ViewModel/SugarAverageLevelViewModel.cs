@@ -24,7 +24,7 @@ namespace DiaHelp.ViewModel
             _db = databaseService;
             Periods = ["3 Месяца", "6 Месяцев", "1 Год"];
             CalculateCommand = new Command(async () => await CalculateAverage());
-            MainPageCommand = new RelayCommand(GoToMain);
+            BackPageCommand = new RelayCommand(GoBack);
             _windowService = windowService;
         }
 
@@ -68,9 +68,9 @@ namespace DiaHelp.ViewModel
             Average = notes.Any() ? notes.Average(n => n.SugarLevel) : 0;
         }
 
-        public void GoToMain(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
+        public void GoBack(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
 
         public ICommand CalculateCommand { get; }
-        public ICommand MainPageCommand { get; }
+        public ICommand BackPageCommand { get; }
     }
 }
