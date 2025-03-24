@@ -10,7 +10,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="40"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
@@ -24,78 +24,46 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <!-- Кнопка "Назад" -->
+            <Button Command="{Binding MainPage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" Background="Gray"/>
 
-            <Button Text="очистить" Grid.Row="0" Grid.Column="4" Command="{Binding Clear}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
-            <Button Text="AVG" Grid.Row="0" Grid.Column="1" Command="{Binding SugarAverage}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
+            <!-- График -->
+            <Border Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="4">
+                <GraphicsView  Drawable="{Binding ChartDrawable}" />
+            </Border>
+            
 
+            <!-- Список записей -->
+            <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
 
-            <Grid Grid.Row="8" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Button Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Text="+" WidthRequest="60"  Command="{Binding AddSugarNoteCommand}" BackgroundColor="MediumSeaGreen" TextColor="White"/>
-
-                <Entry Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"   Placeholder="Уровень сахара: " Text="{Binding SugarLevel}" Keyboard="Numeric" />
-
-                <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Title="Тип измерения" SelectedItem="{Binding MealType}">
-                    <Picker.Items>
-                        <x:String>До еды</x:String>
-                        <x:String>После еды</x:String>
-                        <x:String>Натощак</x:String>
-                    </Picker.Items>
-                </Picker>
-            </Grid>
-
-            <CollectionView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="5" VerticalOptions="Start" ItemsSource="{Binding SugarNotes}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border Stroke="Gray" StrokeThickness="1" Margin="3">
+                <CollectionView ItemsSource="{Binding SugarNotes}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
                             <Grid Padding="10">
                                 <StackLayout>
                                     <HorizontalStackLayout>
-                                        <Label Text="Сахар: "/>
-                                        <Label Text="{Binding SugarLevel}"/>
+                                        <Label Text="{Binding SugarLevel}" FontSize="18"/>
+                                        <Label Text=" ммоль/л" VerticalOptions="End"/>
                                     </HorizontalStackLayout>
-
                                     <HorizontalStackLayout>
-                                        <Label Text="Дата: "/>
-                                        <Label Text="{Binding Date}"/>
+                                        <Label Text="{Binding Date}" />
                                     </HorizontalStackLayout>
-
                                     <HorizontalStackLayout>
-                                        <Label Text="Тип: "/>
-                                        <Label Text="{Binding MeasurementTime}"/>
+                                        <Label Text="{Binding MeasurementTime}" />
                                     </HorizontalStackLayout>
+                                    <BoxView HeightRequest="2" Color="DarkGray" Margin="0, 20, 0, 0" />
                                 </StackLayout>
                             </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
 
-
-        <Grid Grid.Row="1" BackgroundColor="BlueViolet" HeightRequest="60">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Button Text="Главная" Command="{Binding MainPage}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
-
-            <Button Text="Настройки" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
-
-            <Button Text="Сахар" FontSize="14" TextColor="White" BackgroundColor="Transparent"  BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
-            
+            <!-- Кнопка "Ввести данные" -->
+            <Button Command="{Binding EntryData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Text="Ввести данные" BackgroundColor="Gray" />
         </Grid>
     </Grid>
 </ContentPage>
