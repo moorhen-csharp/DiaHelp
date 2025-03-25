@@ -48,12 +48,15 @@
                                         <Label Text="{Binding SugarLevel}" FontSize="18"/>
                                         <Label Text=" ммоль/л" VerticalOptions="End"/>
                                     </HorizontalStackLayout>
+                                    
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding Date}" />
                                     </HorizontalStackLayout>
+                                    
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding MeasurementTime}" />
                                     </HorizontalStackLayout>
+                                    
                                     <BoxView HeightRequest="2" Color="DarkGray" Margin="0, 20, 0, 0" />
                                 </StackLayout>
                             </Grid>

@@ -14,7 +14,6 @@ namespace DiaHelp.ViewModel
         private decimal _sugarLevel { get; set; }
         public string MeasurementTime { get; set; }
         public string _mealType { get; set; }
-
         public ObservableCollection<SugarModel> SugarNotes { get; set; }
         
 
@@ -23,12 +22,9 @@ namespace DiaHelp.ViewModel
             _windowService = windowService;
             _databaseService = databaseService;
             SugarNotes = new ObservableCollection<SugarModel>();
-            AddSugarNoteCommand = new RelayCommand(AddSugarNote);
             MainPage = new RelayCommand(MainGo);
-            Clear = new RelayCommand(ClearNote);
-            SugarAverage = new RelayCommand(Average);
+            EntryData = new RelayCommand(EntryPage);
             LoadSugarNotes();
-
         }
 
         public decimal SugarLevel
@@ -104,18 +100,18 @@ namespace DiaHelp.ViewModel
             if (_databaseService.ClearAllSugarNotes())
             {
                 SugarNotes.Clear();
-                UpdateChart(); // Обновляем график после очистки записей
+                UpdateChart(); 
             }
         }
 
         private void Average(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarAverageLevelViewModel>().View;
 
+        public void EntryPage(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarEntryViewModel>().View;
+
         public IDrawable ChartDrawable { get; set; }
 
         public ICommand Clear { get; }
         public ICommand MainPage { get; }
-        public ICommand AddSugarNoteCommand { get; }
-        public ICommand SugarAverage { get; }
         public ICommand EntryData { get; }
     }
 }
