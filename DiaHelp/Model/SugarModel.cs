@@ -9,8 +9,9 @@ namespace DiaHelp.Model
     public class SugarModel
     {
        public int Id { get; set; }
-       public decimal SugarLevel { get; set; }
-       public string MeasurementTime { get; set; }
-       public DateTime Date { get; set; }
+        public double SugarLevel { get; set; }
+        public string MeasurementTime { get; set; }
+        public int InsulinDose { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -21,7 +21,9 @@ namespace DiaHelp.ViewModel
         {
             _windowService = windowService;
             _databaseService = databaseService;
+
             SugarNotes = new ObservableCollection<SugarModel>();
+
             MainPage = new RelayCommand(MainGo);
             EntryData = new RelayCommand(EntryPage);
             LoadSugarNotes();
@@ -47,6 +49,7 @@ namespace DiaHelp.ViewModel
             }
         }
 
+
         private void UpdateChart()
         {
             ChartDrawable = new SugarChartDrawable(SugarNotes);
@@ -61,50 +64,10 @@ namespace DiaHelp.ViewModel
             {
                 SugarNotes.Add(note);
             }
-            UpdateChart(); // Обновляем график при загрузке данных
-        }
-
-        public async void AddSugarNote(object parameter)
-        {
-            var sugarNote = new SugarModel
-            {
-                SugarLevel = SugarLevel,
-                MeasurementTime = MealType,
-                Date = DateTime.Now
-            };
-
-            if (SugarLevel <= 0)
-            {
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Уровень сахара не может быть меньше или равен 0.", "ОК");
-            }
-
-            else if (string.IsNullOrEmpty(MealType))
-            {
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста введите тип измерения.", "ОК");
-            }
-
-            else if (_databaseService.AddSugarNote(sugarNote))
-            {
-                SugarNotes.Insert(0, sugarNote);
-                SugarLevel = 0;
-                MealType = string.Empty;
-                UpdateChart();
-            }
-            
+            UpdateChart(); 
         }
 
         private void MainGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
-
-        private void ClearNote(object parameter)
-        {
-            if (_databaseService.ClearAllSugarNotes())
-            {
-                SugarNotes.Clear();
-                UpdateChart(); 
-            }
-        }
-
-        private void Average(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarAverageLevelViewModel>().View;
 
         public void EntryPage(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarEntryViewModel>().View;
 

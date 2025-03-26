@@ -65,7 +65,7 @@ namespace DiaHelp.ViewModel
             };
 
             var notes = await _db.GetSugarNotesByPeriod(startDate, endDate);
-            Average = notes.Any() ? notes.Average(n => n.SugarLevel) : 0;
+            //Average = notes.Any() ? notes.Average(n => n.SugarLevel) : 0;
         }
 
         public void GoBack(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;

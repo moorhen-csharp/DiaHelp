@@ -23,8 +23,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
-            <Button Command="{Binding MainPage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" Background="Gray"/>
+
+            <Button Command="{Binding SugarNotePage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" Background="Gray"/>
 
             <!--ввод-->
             <Label Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="4" FontSize="18" HorizontalOptions="Start" VerticalOptions="Start" Padding="10" FontAttributes="Bold" Text="Сахар в крови (ммоль/л)"/>
@@ -112,9 +112,9 @@
 
                 </Grid>
             </Border>
-            
 
-            <Button Command="{Binding SaveData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="Сохранить"  BackgroundColor="Gray" />
+
+            <Button Command="{Binding SaveDataCommand}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="Сохранить"  BackgroundColor="Gray" />
         </Grid>
     </Grid>
 </ContentPage>

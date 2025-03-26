@@ -48,7 +48,10 @@ namespace DiaHelp.Services
         }
 
         //САХАР
-        public List<SugarModel> GetAllSugarNotes() => context.SugarNotes.ToList();
+        public List<SugarModel> GetAllSugarNotes()
+        {
+            return context.SugarNotes.OrderByDescending(note => note.Date).ToList();
+        }
         public bool AddSugarNote(SugarModel sugarNote)
         {
             try
@@ -71,6 +74,7 @@ namespace DiaHelp.Services
             {
                 return await context.SugarNotes
                     .Where(n => n.Date >= startDate && n.Date <= endDate)
+                    .OrderByDescending(n => n.Date) // Сортировка по дате (последние сверху)
                     .ToListAsync();
             }
             catch (Exception ex)

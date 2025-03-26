@@ -56,7 +56,13 @@
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding MeasurementTime}" />
                                     </HorizontalStackLayout>
-                                    
+
+                                    <HorizontalStackLayout>
+                                        <Label Text="Инсулин: " VerticalOptions="End"/>
+                                        <Label Text="{Binding InsulinDose}" />
+                                        <Label Text=" ед" VerticalOptions="End"/>
+                                    </HorizontalStackLayout>
+
                                     <BoxView HeightRequest="2" Color="DarkGray" Margin="0, 20, 0, 0" />
                                 </StackLayout>
                             </Grid>
