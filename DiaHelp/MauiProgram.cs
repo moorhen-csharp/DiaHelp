@@ -20,13 +20,17 @@ namespace DiaHelp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            // Настройка базы данных с использованием SQLite
             builder.Services.AddDbContext<ApplicationContext>(options =>
             {
                 options.UseSqlite($"FileName={Path.Combine(FileSystem.AppDataDirectory, "DiaHelpTest.db")}");
             });
-            builder.Services.AddDbContext<ApplicationContext>();
+
+            // Регистрация сервисов
             builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
             builder.Services.AddTransient<IWindowService, WindowService>();
+            builder.Services.AddSingleton<AuthService>();
 
             // Регистрация ViewModels
             builder.Services.AddTransient<MainViewModel>();
@@ -37,8 +41,6 @@ namespace DiaHelp
             builder.Services.AddTransient<SugarAverageLevelViewModel>();
             builder.Services.AddTransient<SugarEntryViewModel>();
 
-
-
             // Регистрация страниц
             builder.Services.AddTransient<MainView>();
             builder.Services.AddTransient<RegistrationView>();
@@ -47,10 +49,6 @@ namespace DiaHelp
             builder.Services.AddTransient<ProfileView>();
             builder.Services.AddTransient<SugarAverageLevelView>();
             builder.Services.AddTransient<SugarEntryView>();
-
-
-
-
 
 #if DEBUG
             builder.Logging.AddDebug();

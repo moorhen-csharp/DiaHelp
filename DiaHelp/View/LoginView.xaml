@@ -36,9 +36,12 @@
 
 
         <Button Command="{Binding LoginCommand}" Text="Войти" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="6" TextColor="White" CornerRadius="40"/>
+        
+        <Button Command="{Binding LoginYandexCommand}" Text="Войти через яндекс" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="6" TextColor="White" CornerRadius="20" HeightRequest="50"/>
 
-        <Label Text="Нет аккаунта?" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="10" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="Center"/>
-        <Button Command="{Binding RegisterCommand}" BackgroundColor="Transparent" Text="Зарегистрироваться" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="10" HorizontalOptions="Center" TextColor="White" VerticalOptions="Start"  />
+
+        <Label Text="Нет аккаунта?" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="10" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="Center"/>
+        <Button Command="{Binding RegisterCommand}" BackgroundColor="Transparent" Text="Зарегистрироваться" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="10" HorizontalOptions="Center" TextColor="White" VerticalOptions="Start"  />
 
     </Grid>
 </ContentPage>
