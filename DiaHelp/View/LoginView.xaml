@@ -36,17 +36,15 @@
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20" />
             </Border.StrokeShape>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Entry Text="{Binding Username}" Grid.Row="0" HeightRequest="10" Placeholder="Email" Margin="10" FontAttributes="Bold" />
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Entry Text="{Binding Username}" Grid.Row="0" HeightRequest="10" Placeholder="Email" Margin="10" FontAttributes="Bold" />
-
-                    <Entry Text="{Binding Password}" Grid.Row="1"  IsPassword="True" HeightRequest="10" Margin="10" Placeholder="Пароль" FontAttributes="Bold"/>
-                </Grid>
-
+                <Entry Text="{Binding Password}" Grid.Row="1"  IsPassword="True" HeightRequest="10" Margin="10" Placeholder="Пароль" FontAttributes="Bold"/>
+            </Grid>
         </Border>
 
         <Button Command="{Binding LoginCommand}" Text="Войти" Grid.Column="3" Grid.Row="5" HeightRequest="50" Grid.ColumnSpan="5" TextColor="White" CornerRadius="40"/>
