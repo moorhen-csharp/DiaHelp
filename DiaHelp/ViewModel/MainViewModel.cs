@@ -76,10 +76,7 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        private void Profile(object parameter)
-        {
-            Application.Current.MainPage = _windowService.GetAndCreateContentPage<ProfileViewModel>().View;
-        }
+        private void Profile(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<ProfileViewModel>().View;
 
         private async void CalculateInsulin(object parameter)
         {
