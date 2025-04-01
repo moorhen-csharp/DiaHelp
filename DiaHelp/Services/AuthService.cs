@@ -30,6 +30,8 @@ namespace DiaHelp.Services
 
             return await response.Content.ReadFromJsonAsync<AuthResponse>();
         }
+
+
     }
 
 }

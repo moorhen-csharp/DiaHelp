@@ -83,7 +83,6 @@ namespace DiaHelp.ViewModel
 
             Debug.WriteLine("Received code: " + code);
 
-            // Теперь делаем запрос на получение токена
             var tokenResponse = await _authService.GetTokenAsync(code);
             if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.AccessToken))
             {
@@ -91,7 +90,6 @@ namespace DiaHelp.ViewModel
                 Preferences.Set("OAuthToken", tokenResponse.AccessToken);
                 Preferences.Set("IsUserLoggedIn", true);
 
-                // Переход на главную страницу
                 Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
                 Debug.WriteLine("Redirecting to main page.");
             }
