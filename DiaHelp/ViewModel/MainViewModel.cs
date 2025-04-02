@@ -17,8 +17,9 @@ namespace DiaHelp.ViewModel
         {
             _windowService = windowService;
             CalculateCommand = new Command(CalculateInsulin);
-            SugarPage = new RelayCommand(SugarGo);
+            SugarPageCommand = new RelayCommand(SugarGo);
             ProfileCommand = new RelayCommand(Profile);
+            BreadUnitCommand = new RelayCommand(BreadUnitGo);
         }
         public double CurrentGlucose
         {
@@ -122,9 +123,11 @@ namespace DiaHelp.ViewModel
 
         private void SugarGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
 
+        private void BreadUnitGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<BreadUnitViewModel>().View;
 
-        public ICommand SugarPage { get; }
+        public ICommand SugarPageCommand { get; }
         public ICommand CalculateCommand { get; }
         public ICommand ProfileCommand { get; }
+        public ICommand BreadUnitCommand { get; }  
     }
 }

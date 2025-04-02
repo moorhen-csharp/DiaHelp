@@ -40,6 +40,7 @@ namespace DiaHelp
             builder.Services.AddTransient<ProfileViewModel>();
             builder.Services.AddTransient<SugarAverageLevelViewModel>();
             builder.Services.AddTransient<SugarEntryViewModel>();
+            builder.Services.AddTransient<BreadUnitViewModel>();
 
             // Регистрация страниц
             builder.Services.AddTransient<MainView>();
@@ -49,6 +50,7 @@ namespace DiaHelp
             builder.Services.AddTransient<ProfileView>();
             builder.Services.AddTransient<SugarAverageLevelView>();
             builder.Services.AddTransient<SugarEntryView>();
+            builder.Services.AddTransient<BreadUnitView>();
 
 #if DEBUG
             builder.Logging.AddDebug();
