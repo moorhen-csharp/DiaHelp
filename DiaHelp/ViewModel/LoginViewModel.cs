@@ -13,6 +13,9 @@ namespace DiaHelp.ViewModel
         private readonly AuthService _authService;
         private string _username;
         private string _password;
+        private readonly string ClientId = "a13c6e23bebf4cc490e294a57e99cff6";
+        private readonly string ClientSecret = "0f2c96fec93e40f6afbedca6feba7674";
+        private readonly string RedirectUri = "diahelp:/oauth2redirect";
 
         public LoginViewModel(IDatabaseService databaseService, IWindowService windowService, AuthService authService)
         {
@@ -23,7 +26,7 @@ namespace DiaHelp.ViewModel
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(NavigateToRegister);
             LoginYandexCommand = new RelayCommand(LoginYandex);
-            
+
         }
 
         public string Username
@@ -54,17 +57,12 @@ namespace DiaHelp.ViewModel
 
         public async void LoginYandex(object parametr)
         {
-            try
-            {
-                var url = _authService.GetLoginUrl();
-                Debug.WriteLine("Open this URL: " + url);  // Логирование URL
-                await Launcher.OpenAsync(url);
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Ошибка", ex.Message, "OK");
-            }
-            
+
+            string authUrl = $"https://oauth.yandex.ru/authorize?response_type=code&client_id={ClientId}&redirect_uri={RedirectUri}";
+            Debug.WriteLine("Ссылка для авторизации " + authUrl);
+            await Launcher.OpenAsync(authUrl);
+
+
         }
 
         public async Task HandleRedirectAsync(Uri uri)

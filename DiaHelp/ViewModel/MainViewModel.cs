@@ -77,8 +77,6 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        private void Profile(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<ProfileViewModel>().View;
-
         private async void CalculateInsulin(object parameter)
         {
             if (double.TryParse(CurrentGlucose.ToString(), out double currentGlucose) && double.TryParse(TargetGlucose.ToString(), out double targetGlucose) && double.TryParse(ISF.ToString(), out double isf))
@@ -124,6 +122,9 @@ namespace DiaHelp.ViewModel
         private void SugarGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
 
         private void BreadUnitGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<BreadUnitViewModel>().View;
+
+        private void Profile(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<ProfileViewModel>().View;
+
 
         public ICommand SugarPageCommand { get; }
         public ICommand CalculateCommand { get; }

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.SugarNoteView"
              Title="SugarNoteView">
-
     <Grid RowDefinitions="*,Auto" ColumnDefinitions="*, Auto">
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -27,12 +26,6 @@
             <!-- Кнопка "Назад" -->
             <Button Command="{Binding MainPage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" Background="Gray"/>
 
-            <!-- График -->
-            <Border Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="4">
-                <GraphicsView  Drawable="{Binding ChartDrawable}" />
-            </Border>
-            
-
             <!-- Список записей -->
             <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center">
                 <Border.StrokeShape>
@@ -48,11 +41,11 @@
                                         <Label Text="{Binding SugarLevel}" FontSize="18"/>
                                         <Label Text=" ммоль/л" VerticalOptions="End"/>
                                     </HorizontalStackLayout>
-                                    
+
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding Date}" />
                                     </HorizontalStackLayout>
-                                    
+
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding MeasurementTime}" />
                                     </HorizontalStackLayout>

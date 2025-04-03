@@ -105,15 +105,18 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Text="Главная" Command="{Binding MainCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+            <Button Text="--"  FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
 
             <Button Text="ХЕ" Command="{Binding BreadUnitCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
 
-            <Button Text="Сахар" Command="{Binding SugarPageCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+            <ImageButton Source="main.png" Command="{Binding MainCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
 
-            <Button Text="Профиль" Command="{Binding ProfileCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3"/>
+            <Button Text="Сахар" Command="{Binding SugarPageCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3"/>
+
+            <Button Text="Профиль" Command="{Binding ProfileCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="4"/>
         </Grid>
     </Grid>
 </ContentPage>

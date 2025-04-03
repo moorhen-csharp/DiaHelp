@@ -59,10 +59,7 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        private void SelectSugarType(string sugarType)
-        {
-            SelectedSugarType = sugarType;
-        }
+        private void SelectSugarType(string sugarType) =>  SelectedSugarType = sugarType;
 
         private async void SaveSugarNote(object parametr)
         {
@@ -96,10 +93,8 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        public void SugarPage(object parametr)
-        {
-            Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
-        }
+        public void SugarPage(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
+
 
         public ICommand SugarNotePage { get; }
         public ICommand SaveDataCommand { get; }
