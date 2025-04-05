@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.LoginView"
              Title="LoginView">
-    <Grid>
+    <Grid BackgroundColor="#171719">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -32,23 +32,23 @@
 
         <Label Text="Войди в свой аккаунт!" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="11" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
 
-        <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="9" Grid.RowSpan="2">
+        <Border  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="9" Grid.RowSpan="2" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20" />
             </Border.StrokeShape>
-            <Grid>
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Entry Text="{Binding Username}" Grid.Row="0" HeightRequest="10" Placeholder="Email" Margin="10" FontAttributes="Bold" />
+                <Entry Text="{Binding Username}" Grid.Row="0" HeightRequest="10" Placeholder="Email"  FontAttributes="Bold" />
 
-                <Entry Text="{Binding Password}" Grid.Row="1"  IsPassword="True" HeightRequest="10" Margin="10" Placeholder="Пароль" FontAttributes="Bold"/>
+                <Entry Text="{Binding Password}" Grid.Row="1"  IsPassword="True" HeightRequest="10"  Placeholder="Пароль" FontAttributes="Bold"/>
             </Grid>
         </Border>
 
-        <Button Command="{Binding LoginCommand}" Text="Войти" Grid.Column="3" Grid.Row="5" HeightRequest="50" Grid.ColumnSpan="5" TextColor="White" CornerRadius="40"/>
-        <Button Command="{Binding LoginYandexCommand}" Text="Войти через Яндекс" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="5" TextColor="White" CornerRadius="40" HeightRequest="50"/>
+        <Button Command="{Binding LoginCommand}" Text="Войти" Grid.Column="3" Grid.Row="5" HeightRequest="50" Grid.ColumnSpan="5" TextColor="White" BackgroundColor="#2d2d2f" CornerRadius="40"/>
+        <Button Command="{Binding LoginYandexCommand}" Text="Войти через Яндекс" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="5" TextColor="White" BackgroundColor="#2d2d2f" CornerRadius="40" HeightRequest="50"/>
 
         <Label Text="Нет аккаунта?" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="End"/>
         <Button Command="{Binding RegisterCommand}" BackgroundColor="Transparent" Text="Зарегистрироваться" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" HorizontalOptions="Center" TextColor="White" VerticalOptions="Start"  />

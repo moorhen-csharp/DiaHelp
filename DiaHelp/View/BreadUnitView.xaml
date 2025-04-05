@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.BreadUnitView"
              Title="BreadUnitView">
-    <Grid RowDefinitions="*,Auto" >
+    <Grid RowDefinitions="*,Auto" BackgroundColor="#171719">
         <Grid Grid.Row="0" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -28,6 +28,7 @@
 
 
             <Label Text="Подсчет хлебных единиц" TextColor="DimGray" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,10,0,20"/>
+            
             <Border WidthRequest="40" HeightRequest="40" VerticalOptions="Start" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="5">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
@@ -37,7 +38,7 @@
 
             </Border>
 
-            <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6">
+            <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#3b3b3b">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -69,9 +70,9 @@
 
 
 
-            <Button Text="Рассчитать" FontSize="14" FontAttributes="Bold" TextColor="White" WidthRequest="150" HeightRequest="40" HorizontalOptions="Center" Grid.Row="3" Grid.ColumnSpan="6" Margin="5" Command="{Binding CalculateCommand}"/>
+            <Button BackgroundColor="#2d2d2f" CornerRadius="40" Text="Рассчитать" FontSize="14" FontAttributes="Bold" TextColor="White" WidthRequest="150" HeightRequest="40" HorizontalOptions="Center" Grid.Row="3" Grid.ColumnSpan="6" Margin="5" Command="{Binding CalculateCommand}"/>
 
-            <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6">
+            <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#3b3b3b">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -99,7 +100,7 @@
         </Grid>
 
         <!-- NAVBAR -->
-        <Grid Grid.Row="1" BackgroundColor="BlueViolet" HeightRequest="60">
+        <Grid Grid.Row="1" BackgroundColor="Gray" HeightRequest="60">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

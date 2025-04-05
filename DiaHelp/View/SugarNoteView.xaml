@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.SugarNoteView"
              Title="SugarNoteView">
-    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*, Auto">
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*, Auto" BackgroundColor="#171719">
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -24,10 +24,10 @@
             </Grid.RowDefinitions>
 
             <!-- Кнопка "Назад" -->
-            <Button Command="{Binding MainPage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" Background="Gray"/>
+            <Button Command="{Binding MainPage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" BackgroundColor="#2d2d2f"/>
 
             <!-- Список записей -->
-            <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center">
+            <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center"  BackgroundColor="#3b3b3b">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -65,7 +65,7 @@
             </Border>
 
             <!-- Кнопка "Ввести данные" -->
-            <Button Command="{Binding EntryData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Text="Ввести данные" BackgroundColor="Gray" />
+            <Button Command="{Binding EntryData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Text="Ввести данные" TextColor="White" BackgroundColor="#2d2d2f" />
         </Grid>
     </Grid>
 </ContentPage>

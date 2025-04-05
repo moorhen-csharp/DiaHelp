@@ -11,7 +11,7 @@ namespace DiaHelp.ViewModel
         {
             _windowService = windowService;
             LogoutCommand = new RelayCommand(Logout);
-            MainPage = new RelayCommand(MainGo);
+            MainPageCommand = new RelayCommand(MainGo);
 
         }
 
@@ -23,7 +23,7 @@ namespace DiaHelp.ViewModel
 
         private void MainGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
 
-        public ICommand MainPage { get; }
+        public ICommand MainPageCommand { get; }
         public ICommand LogoutCommand { get; }
     }
 }

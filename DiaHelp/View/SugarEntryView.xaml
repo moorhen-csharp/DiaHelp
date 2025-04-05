@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.SugarEntryView"
              Title="SugarEntryView">
-    
-    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*, Auto">
+
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*, Auto" BackgroundColor="#171719">
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -24,77 +24,89 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Command="{Binding SugarNotePage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" Background="Gray"/>
+            <Button Command="{Binding SugarNotePage}" BackgroundColor="#2d2d2f" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" />
 
             <!--ввод-->
-            <Label Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="4" FontSize="18" HorizontalOptions="Start" VerticalOptions="Start" Padding="10" FontAttributes="Bold" Text="Сахар в крови (ммоль/л)"/>
-            <Border Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0, 0, 0, 5">
+
+
+            <Border Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0, 0, 0, 5" BackgroundColor="#3b3b3b">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Grid.Row="0" Margin="10" FontSize="18" FontAttributes="Bold" Text="Сахар в крови (ммоль/л)"/>
+                    <Entry Grid.Row="1" HorizontalOptions="Center" WidthRequest="70" HeightRequest="60" HorizontalTextAlignment="Center" Placeholder="0" FontSize="25" Text="{Binding SugarLevel}" Keyboard="Numeric" />
                 
-                <Entry HorizontalOptions="Center" WidthRequest="70" HeightRequest="60" HorizontalTextAlignment="Center" Placeholder="0" FontSize="25" Text="{Binding SugarLevel}" Keyboard="Numeric" />
+                </Grid>
             
             </Border>
 
             <!--статус-->
-            <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" HorizontalOptions="Start"  Padding="15" FontSize="18" FontAttributes="Bold" Text="Выбор текущего статуса" />
-            <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="0,10,0,20" >
+
+            <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="0,10,0,20" BackgroundColor="#3b3b3b" >
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
-                <HorizontalStackLayout HorizontalOptions="Center"  >
+                <Grid>
+                    <Label HorizontalOptions="Start" Margin="10" FontSize="18" FontAttributes="Bold" Text="Выбор текущего статуса"/>
 
-                    <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <HorizontalStackLayout HorizontalOptions="Center"  >
 
-                        <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}" CommandParameter="Натощак" CornerRadius="100"/>
-                        <Label Grid.Row="1" Text="Натощак" FontSize="12" HorizontalOptions="Center" />
-                    </Grid>
+                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                    <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        
-                        <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}"  CommandParameter="До еды" CornerRadius="100"/>
+                            <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}" BackgroundColor="Gray" CommandParameter="Натощак" CornerRadius="100"/>
+                            <Label Grid.Row="1" Text="Натощак" FontSize="12" HorizontalOptions="Center" />
+                        </Grid>
 
+                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                        <Label Grid.Row="1"  Text="До еды"  FontSize="12"  HorizontalOptions="Center"  />
-                    </Grid>
-
-                    <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        
-                        <Button Grid.Row="0"   Command="{Binding SelectSugarTypeCommand}"   CommandParameter="После еды" CornerRadius="100"/>
+                            <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}"  BackgroundColor="Gray" CommandParameter="До еды" CornerRadius="100"/>
 
 
-                        <Label Grid.Row="1"  Text="После еды" FontSize="12"  HorizontalOptions="Center" />
-                    </Grid>
+                            <Label Grid.Row="1"  Text="До еды"  FontSize="12"  HorizontalOptions="Center"  />
+                        </Grid>
 
-                    <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        
-                        <Button Grid.Row="0"  Command="{Binding SelectSugarTypeCommand}"  CommandParameter="До сна"   CornerRadius="100"/>
+                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Button Grid.Row="0"   Command="{Binding SelectSugarTypeCommand}"  BackgroundColor="Gray"  CommandParameter="После еды" CornerRadius="100"/>
 
 
-                        <Label Grid.Row="1"  Text="До сна" FontSize="12" HorizontalOptions="Center" />
-                    </Grid>
-                </HorizontalStackLayout>
+                            <Label Grid.Row="1"  Text="После еды" FontSize="12"  HorizontalOptions="Center" />
+                        </Grid>
+
+                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0"  Command="{Binding SelectSugarTypeCommand}" BackgroundColor="Gray"  CommandParameter="До сна"   CornerRadius="100"/>
+                            <Label Grid.Row="1"  Text="До сна" FontSize="12" HorizontalOptions="Center" />
+                        </Grid>
+                    </HorizontalStackLayout>
+                </Grid>
+                
             </Border>
 
             <!--инсулин-->
-            <Border Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest="100" Margin="0,5,0,0"  Padding="10">
+            <Border Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest="100" Margin="0,5,0,0"  Padding="10" BackgroundColor="#3b3b3b">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -114,7 +126,7 @@
             </Border>
 
 
-            <Button Command="{Binding SaveDataCommand}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="Сохранить"  BackgroundColor="Gray" />
+            <Button Command="{Binding SaveDataCommand}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="Сохранить" TextColor="White" BackgroundColor="#2d2d2f" />
         </Grid>
     </Grid>
 </ContentPage>

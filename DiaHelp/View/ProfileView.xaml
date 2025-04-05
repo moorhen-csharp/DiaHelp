@@ -20,24 +20,27 @@
             </Grid.ColumnDefinitions>
         </Grid>
 
-        <Button WidthRequest="160" VerticalOptions="End" HeightRequest="50" Text="Выйти из аккаунта" Command="{Binding LogoutCommand}" Background="Blue" TextColor="White"/>
+        <Button WidthRequest="160" VerticalOptions="End" HeightRequest="50" Text="Выйти из аккаунта" Command="{Binding LogoutCommand}" BackgroundColor="#2d2d2f" TextColor="White" CornerRadius="40"/>
 
             <!-- NAVBAR -->
-        <Grid Grid.Row="1" BackgroundColor="BlueViolet" HeightRequest="60">
+        <Grid Grid.Row="1" BackgroundColor="Gray" HeightRequest="60">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Text="Главная" Command="{Binding MainPage}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+            <ImageButton Source="school.png" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
 
-            <Button Text="Настройки" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+            <Button Text="ХЕ" Command="{Binding BreadUnitCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
 
-            <Button Text="Сахар" Command="{Binding SugarPage}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+            <ImageButton Source="main.png" Command="{Binding MainPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
 
-            <Button Text="Профиль" Command="{Binding Profile}" FontSize="14" TextColor="White" BackgroundColor="Transparent"  BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3"/>
+            <ImageButton Source="notes.png" Command="{Binding SugarPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3"/>
+
+            <ImageButton Source="profile.png" Command="{Binding ProfileCommand}"  BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="4"/>
         </Grid>
     </Grid>
 </ContentPage>

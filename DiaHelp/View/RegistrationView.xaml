@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.RegistrationView"
              Title="RegistrationView">
-    <Grid>
+    <Grid BackgroundColor="#171719">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -27,18 +27,35 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Text="Привет, давай познакомимся!" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
+        <Label Text="Привет, давай познакомимся!" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="11" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
 
-        <Entry Text="{Binding Email}" HeightRequest="10" Placeholder="Email" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold" />
-        <Entry Text="{Binding Password}" IsPassword="True" HeightRequest="10" Placeholder="Пароль" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
-        <Entry Text="{Binding ConfirmPassword}" IsPassword="True" HeightRequest="10" Placeholder="Повторите пароль" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="6" PlaceholderColor="White" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
 
-        <Button Command="{Binding RegisterCmnd}" Text="Зарегистрироваться" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="6" TextColor="White" CornerRadius="40"/>
+        <Border Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="9">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-        <Label Text="Есть аккаунт?" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="10" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="Center"/>
-        <Button Command="{Binding LoginCmnd}" BackgroundColor="Transparent" Text="Войти" Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="2" TextColor="White" VerticalOptions="Start"  />
+                <Entry Text="{Binding Email}" Grid.Row="0" HeightRequest="10" Placeholder="Email" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+                <Entry Text="{Binding Password}" Grid.Row="1" IsPassword="True" HeightRequest="10" Placeholder="Пароль" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+                <Entry Text="{Binding ConfirmPassword}" Grid.Row="2" IsPassword="True" HeightRequest="10" Placeholder="Повторите пароль" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+
+            </Grid>
+        </Border>
+
+
+        <Button Command="{Binding RegisterCmnd}" BackgroundColor="#2d2d2f"  HeightRequest="50" Text="Зарегистрироваться" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="7" VerticalOptions="End" HorizontalOptions="Center" TextColor="White" CornerRadius="40"/>
+
+        <Label Text="Есть аккаунт?" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="End"/>
+        <Button Command="{Binding LoginCmnd}" BackgroundColor="Transparent" Text="Войти" Grid.Column="4" Grid.Row="8" Grid.ColumnSpan="3" TextColor="White" VerticalOptions="Start"  />
 
     </Grid>
 </ContentPage>
