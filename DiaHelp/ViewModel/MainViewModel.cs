@@ -1,5 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-using DiaHelp.Interface;
+﻿using DiaHelp.Interface;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -8,13 +7,14 @@ namespace DiaHelp.ViewModel
     {
         private double _currentGlucose;
         private double _targetGlucose;
-        private double _isf;
         private double _currentValue;
         private string _result;
+        private readonly IDatabaseService _databaseService;
         private IWindowService _windowService;
 
-        public MainViewModel(IWindowService windowService)
+        public MainViewModel(IWindowService windowService, IDatabaseService databaseService)
         {
+            _databaseService = databaseService;
             _windowService = windowService;
             CalculateCommand = new Command(CalculateInsulin);
             SugarPageCommand = new RelayCommand(SugarGo);
@@ -41,15 +41,6 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        public double ISF
-        {
-            get => _isf;
-            set
-            {
-                _isf = value;
-                OnPropertyChanged();
-            }
-        }
         public double CurrentValue
         {
             get => _currentValue;
@@ -79,7 +70,14 @@ namespace DiaHelp.ViewModel
 
         private async void CalculateInsulin(object parameter)
         {
-            if (double.TryParse(CurrentGlucose.ToString(), out double currentGlucose) && double.TryParse(TargetGlucose.ToString(), out double targetGlucose) && double.TryParse(ISF.ToString(), out double isf))
+            var username = Preferences.Get("CurrentUsername", string.Empty);
+
+            if (string.IsNullOrEmpty(username))
+                return;
+
+            var user = _databaseService.GetUser(username);
+
+            if (double.TryParse(CurrentGlucose.ToString(), out double currentGlucose) && double.TryParse(TargetGlucose.ToString(), out double targetGlucose))
             {
                 if (currentGlucose <= 0)
                 {
@@ -89,14 +87,10 @@ namespace DiaHelp.ViewModel
                 {
                     await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, введите целевой уровень глюкозы.", "ОК");
                 }
-                else if (isf <= 0)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, введите коэффициент инсулина.", "ОК");
-                }
 
-                else if (currentGlucose > 0 && targetGlucose > 0 && isf > 0)
+                else if (currentGlucose > 0 && targetGlucose > 0 && user.CoeffInsulin > 0)
                 {
-                    double correctionInsulin = (currentGlucose - targetGlucose) / isf;
+                    double correctionInsulin = (currentGlucose - targetGlucose) / user.CoeffInsulin;
 
                     if (correctionInsulin < 0)
                     {
@@ -110,7 +104,7 @@ namespace DiaHelp.ViewModel
 
         private async Task AnimateResult(double finalValue)
         {
-            double step = finalValue / 50; 
+            double step = finalValue / 50;
             for (double i = 0; i <= finalValue; i += step)
             {
                 CurrentValue = i;
@@ -129,6 +123,6 @@ namespace DiaHelp.ViewModel
         public ICommand SugarPageCommand { get; }
         public ICommand CalculateCommand { get; }
         public ICommand ProfileCommand { get; }
-        public ICommand BreadUnitCommand { get; }  
+        public ICommand BreadUnitCommand { get; }
     }
 }
