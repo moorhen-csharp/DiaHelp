@@ -71,11 +71,9 @@ namespace DiaHelp.ViewModel
         public async void CalcelateBU(object parametr)
         {
             double CalcBU = ((Carbohydrates * ProductWeight) / 100) / 12;
-
+            await AnimateResult(CalcBU);
             Carbohydrates = 0;
             ProductWeight = 0;
-
-            await AnimateResult(CalcBU);
         }
 
         private async Task AnimateResult(double finalValue)

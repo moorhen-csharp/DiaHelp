@@ -17,22 +17,20 @@ namespace DiaHelp
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Comfortaa-VariableFont_wght.ttf", "Comfortaa");
                 });
 
-            // Настройка базы данных с использованием SQLite
             builder.Services.AddDbContext<ApplicationContext>(options =>
             {
                 options.UseSqlite($"FileName={Path.Combine(FileSystem.AppDataDirectory, "DiaHelpTest.db")}");
             });
 
-            // Регистрация сервисов
+            //Services
             builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
             builder.Services.AddTransient<IWindowService, WindowService>();
             builder.Services.AddSingleton<AuthService>();
 
-            // Регистрация ViewModels
+            //ViewModel
             builder.Services.AddTransient<MainViewModel>();
             builder.Services.AddTransient<RegistrationViewModel>();
             builder.Services.AddTransient<LoginViewModel>();
@@ -42,7 +40,7 @@ namespace DiaHelp
             builder.Services.AddTransient<SugarEntryViewModel>();
             builder.Services.AddTransient<BreadUnitViewModel>();
 
-            // Регистрация страниц
+            //View
             builder.Services.AddTransient<MainView>();
             builder.Services.AddTransient<RegistrationView>();
             builder.Services.AddTransient<LoginView>();

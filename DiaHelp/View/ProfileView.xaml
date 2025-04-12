@@ -3,26 +3,99 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DiaHelp.View.ProfileView"
              Title="ProfileView">
-    <Grid RowDefinitions="*,Auto" >
+    <Grid RowDefinitions="*,Auto" BackgroundColor="#171719">
         <Grid Grid.Row="0" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
+
+            <Label Text="Профиль" TextColor="DimGray" FontSize="18" Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="Center"/>
+
+            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Имя:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="{Binding Name}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                   
+                </Grid>
+            </Border>
+            
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Фамилия:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="{Binding LatsName}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+
+                </Grid>
+            </Border>
+            
+            <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Почта:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="{Binding Email}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+
+                </Grid>
+            </Border>
+            
+            <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Коэффициент инсулина:" VerticalOptions="Center" HorizontalOptions="Center" FontSize="13" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="{Binding Bu}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+
+                </Grid>
+            </Border>
+
+            <Button Command="{Binding LogoutCommand}" Text="Выйти" TextColor="White" BackgroundColor="#2d2d2f" CornerRadius="40"  WidthRequest="150" HeightRequest="40" Grid.Row="9" Grid.Column="4"  />
         </Grid>
 
-        <Button WidthRequest="160" VerticalOptions="End" HeightRequest="50" Text="Выйти из аккаунта" Command="{Binding LogoutCommand}" BackgroundColor="#2d2d2f" TextColor="White" CornerRadius="40"/>
-
-            <!-- NAVBAR -->
+        <!-- NAVBAR -->
         <Grid Grid.Row="1" BackgroundColor="Gray" HeightRequest="60">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

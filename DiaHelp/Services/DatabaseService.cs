@@ -23,6 +23,7 @@ namespace DiaHelp.Services
                 return false;
             }
         }
+
         //ЮЗЕР
         public List<UserModel> GetAllUser() => context.Users.ToList();
         public UserModel GetUser(string username) => context.Users.FirstOrDefault(p => p.Username == username);

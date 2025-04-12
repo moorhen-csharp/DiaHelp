@@ -27,7 +27,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <Label Text="Подсчет хлебных единиц" TextColor="DimGray" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,10,0,20"/>
+            <Label Text="Подсчет хлебных единиц" TextColor="DimGray" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,10,0,20"/>
             
             <Border WidthRequest="40" HeightRequest="40" VerticalOptions="Start" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="5">
                 <Border.StrokeShape>
@@ -92,7 +92,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Количество хлебных единиц:" FontSize="17" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10" VerticalOptions="Center"/>
+                    <Label Text="Количество хлебных единиц:" FontSize="16" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10" VerticalOptions="Center"/>
                     <Label Text="{Binding Result}" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"  Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" Margin="5"/>
 
                 </Grid>

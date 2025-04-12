@@ -15,6 +15,16 @@ namespace DiaHelp.ViewModel
 
         }
 
+        public void LoadData(object parametr)
+        {
+            //var user = _databaseService.GetAllSugarNotes();
+            //SugarNotes.Clear();
+            //foreach (var note in notes)
+            //{
+            //    SugarNotes.Add(note);
+            //}
+        }
+
         public void Logout(object parametr)
         {
             Preferences.Set("IsUserLoggedIn", false);
