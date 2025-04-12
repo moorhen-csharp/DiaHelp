@@ -1,6 +1,5 @@
 ﻿using DiaHelp.Interface;
 using DiaHelp.Model;
-using DiaHelp.Services;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 
@@ -13,6 +12,9 @@ namespace DiaHelp.ViewModel
         private string _email;
         private string _password;
         private string _confirmPassword;
+        private string _name;
+        private string _lastName;
+        private double _coeffInsulin;
 
         public RegistrationViewModel(IDatabaseService databaseService, IWindowService windowService)
         {
@@ -26,6 +28,24 @@ namespace DiaHelp.ViewModel
         {
             get => _email;
             set => SetProperty(ref _email, value);
+        }
+
+        public string Name
+        {
+            get => _name;
+            set => SetProperty(ref _name, value);
+        }
+
+        public string LastName
+        {
+            get => _lastName;
+            set => SetProperty(ref _lastName, value);
+        }
+
+        public double CoeffInsulin
+        {
+            get => _coeffInsulin;
+            set => SetProperty(ref _coeffInsulin, value);
         }
 
         public string Password
@@ -68,6 +88,9 @@ namespace DiaHelp.ViewModel
 
             var newUser = new UserModel
             {
+                Name = Name,
+                LastName = LastName,
+                CoeffInsulin = CoeffInsulin,
                 Email = Email,
                 Password = Password,
                 Username = Email,

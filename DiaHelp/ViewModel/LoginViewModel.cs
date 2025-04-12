@@ -47,6 +47,7 @@ namespace DiaHelp.ViewModel
             if (user != null && BCrypt.Net.BCrypt.Verify(Password, user.Password))
             {
                 Preferences.Set("IsUserLoggedIn", true);
+                Preferences.Set("CurrentUsername", user.Username); // вот здесь сохраняем!
                 Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
             }
             else

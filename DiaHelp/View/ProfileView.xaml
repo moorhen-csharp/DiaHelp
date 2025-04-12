@@ -39,7 +39,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Имя:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding Name}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1"/>
                    
                 </Grid>
             </Border>
@@ -55,7 +55,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Фамилия:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding LatsName}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding LastName}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1"/>
 
                 </Grid>
             </Border>
@@ -71,7 +71,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Почта:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding Email}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding Email}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1"/>
 
                 </Grid>
             </Border>
@@ -87,7 +87,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Коэффициент инсулина:" VerticalOptions="Center" HorizontalOptions="Center" FontSize="13" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding Bu}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding CoeffInsulin}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1"/>
 
                 </Grid>
             </Border>

@@ -33,7 +33,7 @@
         <Label Text="Привет, давай познакомимся!" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="11" FontSize="20" HorizontalOptions="Center" Margin="20" FontAttributes="Bold"/>
 
 
-        <Border Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="9">
+        <Border Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="9">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20" />
             </Border.StrokeShape>
@@ -42,20 +42,35 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Entry Text="{Binding Email}" Grid.Row="0" HeightRequest="10" Placeholder="Email" HorizontalTextAlignment="Start" FontAttributes="Bold" />
-                <Entry Text="{Binding Password}" Grid.Row="1" IsPassword="True" HeightRequest="10" Placeholder="Пароль" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
-                <Entry Text="{Binding ConfirmPassword}" Grid.Row="2" IsPassword="True" HeightRequest="10" Placeholder="Повторите пароль" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+                <Entry Text="{Binding Name}" Grid.Row="1" HeightRequest="10" Placeholder="Имя" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+                <Entry Text="{Binding LastName}" Grid.Row="2" HeightRequest="10" Placeholder="Фамилия" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Коррекционный инсулин:"  Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+                    <Entry Text="{Binding CoeffInsulin}" Grid.Column="2" HeightRequest="10" HorizontalTextAlignment="Center" Placeholder="Коррекционный инсулин"  FontAttributes="Bold" />
+
+                </Grid>
+                <Entry Text="{Binding Password }" Grid.Row="4" IsPassword="True" HeightRequest="10" Placeholder="Пароль" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+                <Entry Text="{Binding ConfirmPassword}" Grid.Row="5" IsPassword="True" HeightRequest="10" Placeholder="Повторите пароль" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
 
             </Grid>
         </Border>
 
 
-        <Button Command="{Binding RegisterCmnd}" BackgroundColor="#2d2d2f"  HeightRequest="50" Text="Зарегистрироваться" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="7" VerticalOptions="End" HorizontalOptions="Center" TextColor="White" CornerRadius="40"/>
+        <Button Command="{Binding RegisterCmnd}" BackgroundColor="#2d2d2f"  HeightRequest="50" Text="Зарегистрироваться" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="7" VerticalOptions="End" HorizontalOptions="Center" TextColor="White" CornerRadius="40"/>
 
-        <Label Text="Есть аккаунт?" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" FontSize="15" HorizontalOptions="Center" TextColor="Gray" VerticalOptions="End"/>
-        <Button Command="{Binding LoginCmnd}" BackgroundColor="Transparent" Text="Войти" Grid.Column="4" Grid.Row="8" Grid.ColumnSpan="3" TextColor="White" VerticalOptions="Start"  />
+        <Label Text="Есть аккаунт?" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" FontSize="15" HorizontalOptions="Center"  TextColor="Gray" VerticalOptions="End"/>
+        <Button Command="{Binding LoginCmnd}" BackgroundColor="Transparent" Text="Войти" Grid.Column="4" Grid.Row="9" Grid.ColumnSpan="3" TextColor="White" VerticalOptions="Start"  />
 
     </Grid>
 </ContentPage>

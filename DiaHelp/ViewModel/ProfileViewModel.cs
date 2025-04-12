@@ -5,24 +5,59 @@ namespace DiaHelp.ViewModel
 {
     public class ProfileViewModel : BaseViewModel
     {
+        private readonly IDatabaseService _databaseService;
         private readonly IWindowService _windowService;
+        private string _email;
+        private string _name;
+        private string _lastName;
+        private double _coeffInsulinil;
 
-        public ProfileViewModel(IWindowService windowService)
+        public ProfileViewModel(IWindowService windowService, IDatabaseService databaseService)
         {
             _windowService = windowService;
             LogoutCommand = new RelayCommand(Logout);
             MainPageCommand = new RelayCommand(MainGo);
-
+            _databaseService = databaseService;
+            LoadData();
         }
 
-        public void LoadData(object parametr)
+        public string Email
         {
-            //var user = _databaseService.GetAllSugarNotes();
-            //SugarNotes.Clear();
-            //foreach (var note in notes)
-            //{
-            //    SugarNotes.Add(note);
-            //}
+            get => _email;
+            set => SetProperty(ref _email, value);
+        }
+        public string Name
+        {
+            get => _name;
+            set => SetProperty(ref _name, value);
+        }
+        public string LastName
+        {
+            get => _lastName;
+            set => SetProperty(ref _lastName, value);
+        }
+        public double CoeffInsulin
+        {
+            get => _coeffInsulinil;
+            set => SetProperty(ref _coeffInsulinil, value);
+        }
+
+        public void LoadData()
+        {
+            var username = Preferences.Get("CurrentUsername", string.Empty);
+
+            if (string.IsNullOrEmpty(username))
+                return;
+
+            var user = _databaseService.GetUser(username);
+
+            if (user != null)
+            {
+                Email = user.Email;
+                Name = user.Name;
+                LastName = user.LastName;
+                CoeffInsulin = user.CoeffInsulin;
+            }
         }
 
         public void Logout(object parametr)
