@@ -100,7 +100,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ImageButton Source="school.png" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+            <ImageButton Source="school.png" Command="{Binding DiabetesSchoolPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
 
             <Button Text="ХЕ" Command="{Binding BreadUnitCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
             

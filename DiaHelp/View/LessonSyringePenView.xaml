@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DiaHelp.View.LessonSyringePenView"
+             Title="LessonSyringePenView">
+    <Grid RowDefinitions="*,Auto" BackgroundColor="#171719">
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Школа диабета 1 типа на шприц ручках" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="Center" FontSize="18" TextColor="DimGray"/>
+
+            <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Урок 1: Общие сведения о диабете" Grid.Row="0" Margin="5" />
+                    <Button Command="{Binding DiabetesLessonOneCommand}" Text="Перейти к урокам" Background="Transparent" TextColor="DimGray" Grid.Row="1"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Урок 2: Самоконтроль глюкозы крови" Grid.Row="0" Margin="5"/>
+                    <Button Text="Перейти к урокам" Background="Transparent" TextColor="DimGray" Grid.Row="1"/>
+                </Grid>
+            </Border>
+
+        </Grid>
+
+        <!-- NAVBAR -->
+        <Grid Grid.Row="1" BackgroundColor="Gray" HeightRequest="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Source="school.png" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+
+            <Button Text="ХЕ" Command="{Binding BreadUnitCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+
+            <ImageButton Source="main.png" Command="{Binding MainPage}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+
+            <ImageButton Source="notes.png" Command="{Binding SugarPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3"/>
+
+            <ImageButton Source="profile.png" Command="{Binding ProfileCommand}"  BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="4"/>
+        </Grid>
+    </Grid>
+</ContentPage>

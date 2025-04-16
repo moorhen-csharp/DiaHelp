@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DiaHelp.View.DiabetesLessonOneView"
+             Title="DiabetesLessonOneView">
+    <Grid RowDefinitions="*,Auto" BackgroundColor="#171719">
+        <Grid Grid.Row="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Урок 1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="Center" TextColor="DimGray" FontSize="18"/>
+            <Button Command="{Binding BackPage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Назад" TextColor="White" FontSize="15" BackgroundColor="#2d2d2f"/>
+
+
+            <ScrollView Grid.Row="1" Grid.Column="0" Grid.RowSpan="10" Grid.ColumnSpan="6">
+                <VerticalStackLayout>
+                    <Label HorizontalTextAlignment="Justify">
+                        <Label.FormattedText FontFamily="Comfortaa">
+                            <FormattedString>
+                                <Span FontFamily="Comfortaa" Text="Глюкоза" FontAttributes="Bold" />
+                                <Span FontFamily="Comfortaa" Text=" — это основной источник энергии для клеток нашего организма, необходимый для нормального функционирования всех органов и систем. Поддержание оптимального уровня глюкозы в крови является ключевым аспектом здоровья, особенно для пациентов с сахарным диабетом. Разберем основные пути поступления глюкозы в кровь, чтобы понять, как организм регулирует этот важный процесс." />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label HorizontalOptions="Center"  Text="1. Пищевые углеводы" FontAttributes="Bold" FontSize="20"/>
+                    <Label HorizontalTextAlignment="Justify" Text="Первый и наиболее очевидный источник глюкозы в крови — это углеводы, которые мы получаем с пищей. Углеводы содержатся в различных продуктах, таких как хлеб, макароны, картофель, крупы, фрукты и ягоды, овощи, жидкие молочные продукты, кондитерские изделия. После того как пища попадает в желудочно-кишечный тракт, углеводы начинают расщепляться на простые сахара, включая глюкозу. Этот процесс происходит под действием ферментов в кишечнике. Глюкоза, высвободившаяся из пищи, переходит из кишечника в кровь. Именно поэтому через некоторое время после еды у любого человека, в том числе и в норме, уровень глюкозы в крови повышается. Важно понимать, что разные углеводы по-разному влияют на уровень глюкозы в крови. Например, простые по составу углеводы (глюкоза, фруктоза, сахароза, лактоза) легко усваиваются и вызывают быстрое повышение уровня глюкозы, тогда как сложные углеводы (крахмал) перевариваются медленнее и обеспечивают более плавное и длительное повышение глюкозы в крови."/>
+                    <Label HorizontalOptions="Center" Text="2. Гликоген печени" FontAttributes="Bold" FontSize="20"/>
+                    <Label HorizontalTextAlignment="Justify" Text="Помимо углеводов, поступающих с пищей, важным источником глюкозы для организма является гликоген, хранящийся в печени. Когда уровень глюкозы в крови начинает снижаться, печень активирует процесс гликогенолиза — расщепления гликогена на глюкозу. Эта глюкоза затем поступает в кровь, помогая поддерживать стабильный уровень глюкозы до следующего приёма пищи. Запас глюкозы в печени играет ключевую роль в поддержании необходимого уровня глюкозы в крови между приёмами пищи, во время сна или во время физических нагрузок. Таким образом, печень обеспечивает организм глюкозой в те моменты, когда доступ к пище ограничен." />
+                    <Label HorizontalOptions="Center" Text="3. Глюконеогенез" FontAttributes="Bold" FontSize="20"/>
+                    <Label HorizontalTextAlignment="Justify" Text="Когда запасы гликогена в печени истощаются (например, при длительном голодании или в условиях низкоуглеводной диеты), организм начинает получать глюкозу из других пищевых компонентов. Этот процесс называется глюконеогенезом и происходит преимущественно в печени, а также в почках. Глюконеогенез включает преобразование неуглеводных соединений, таких как аминокислоты (составные части белков), глицерин (компонент жиров) и лактат, в глюкозу. Этот процесс является жизненно важным для поддержания уровня глюкозы в крови, особенно в тех случаях, когда организм не получает достаточно углеводов с пищей." />
+                </VerticalStackLayout>
+            </ScrollView>
+
+
+        </Grid>
+
+        <!-- NAVBAR -->
+        <Grid Grid.Row="1" BackgroundColor="Gray" HeightRequest="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Source="school.png" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+
+            <Button Text="ХЕ" Command="{Binding BreadUnitCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+
+            <ImageButton Source="main.png" Command="{Binding MainPage}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+
+            <ImageButton Source="notes.png" Command="{Binding SugarPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3"/>
+
+            <ImageButton Source="profile.png" Command="{Binding ProfileCommand}"  BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="4"/>
+        </Grid>
+    </Grid>
+    
+</ContentPage>

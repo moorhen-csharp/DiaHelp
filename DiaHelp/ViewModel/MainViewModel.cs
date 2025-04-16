@@ -20,6 +20,8 @@ namespace DiaHelp.ViewModel
             SugarPageCommand = new RelayCommand(SugarGo);
             ProfileCommand = new RelayCommand(Profile);
             BreadUnitCommand = new RelayCommand(BreadUnitGo);
+            DiabetesSchoolPageCommand = new RelayCommand(DiabetesSchoolGo);
+
         }
         public double CurrentGlucose
         {
@@ -119,10 +121,13 @@ namespace DiaHelp.ViewModel
 
         private void Profile(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<ProfileViewModel>().View;
 
+        private void DiabetesSchoolGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<DiabetesSchoolViewModel>().View;
+
 
         public ICommand SugarPageCommand { get; }
         public ICommand CalculateCommand { get; }
         public ICommand ProfileCommand { get; }
         public ICommand BreadUnitCommand { get; }
+        public ICommand DiabetesSchoolPageCommand { get; }
     }
 }
