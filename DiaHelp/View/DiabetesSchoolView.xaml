@@ -31,7 +31,7 @@
 
             <Label Text="Диабет 1 типа:" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" FontSize="20"/>
             
-            <Border Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3">
+            <Border Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6" Margin="5" Padding="10">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -45,7 +45,7 @@
                 </Grid>
             </Border>
 
-            <Border Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="3">
+            <Border Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6" Margin="5" Padding="10">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -59,7 +59,7 @@
                 </Grid>
             </Border>
 
-            <Label Text="Диабет 2 типа:" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" FontSize="20" VerticalOptions="End"/>
+            <Label Text="Диабет 2 типа:" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" FontSize="20" VerticalOptions="End"/>
 
 
         </Grid>
