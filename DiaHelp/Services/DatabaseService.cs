@@ -26,7 +26,6 @@ namespace DiaHelp.Services
 
         //ЮЗЕР
         public List<UserModel> GetAllUser() => context.Users.ToList();
-        //public List<UserModel> GetUserData() => context.Users.ToList();
         public UserModel GetUser(string username) => context.Users.FirstOrDefault(p => p.Username == username);
         public bool AddUser(UserModel userModel)
         {

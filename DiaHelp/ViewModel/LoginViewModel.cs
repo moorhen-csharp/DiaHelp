@@ -25,7 +25,7 @@ namespace DiaHelp.ViewModel
 
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(NavigateToRegister);
-            LoginYandexCommand = new RelayCommand(LoginYandex);
+            //LoginYandexCommand = new RelayCommand(LoginYandex);
 
         }
 
@@ -56,48 +56,48 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        public async void LoginYandex(object parametr)
-        {
+        //public async void LoginYandex(object parametr)
+        //{
 
-            string authUrl = $"https://oauth.yandex.ru/authorize?response_type=code&client_id={ClientId}&redirect_uri={RedirectUri}";
-            Debug.WriteLine("Ссылка для авторизации " + authUrl);
-            await Launcher.OpenAsync(authUrl);
+        //    string authUrl = $"https://oauth.yandex.ru/authorize?response_type=code&client_id={ClientId}&redirect_uri={RedirectUri}";
+        //    Debug.WriteLine("Ссылка для авторизации " + authUrl);
+        //    await Launcher.OpenAsync(authUrl);
 
 
-        }
+        //}
 
-        public async Task HandleRedirectAsync(Uri uri)
-        {
-            Debug.WriteLine("Handling redirect... URL: " + uri.ToString());
+        //public async Task HandleRedirectAsync(Uri uri)
+        //{
+        //    Debug.WriteLine("Handling redirect... URL: " + uri.ToString());
 
-            var query = HttpUtility.ParseQueryString(uri.Query);
-            var code = query["code"];
+        //    var query = HttpUtility.ParseQueryString(uri.Query);
+        //    var code = query["code"];
 
-            if (string.IsNullOrEmpty(code))
-            {
-                Debug.WriteLine("Error: Authorization code is missing.");
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось получить код авторизации", "OK");
-                return;
-            }
+        //    if (string.IsNullOrEmpty(code))
+        //    {
+        //        Debug.WriteLine("Error: Authorization code is missing.");
+        //        await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось получить код авторизации", "OK");
+        //        return;
+        //    }
 
-            Debug.WriteLine("Received code: " + code);
+        //    Debug.WriteLine("Received code: " + code);
 
-            var tokenResponse = await _authService.GetTokenAsync(code);
-            if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.AccessToken))
-            {
-                Debug.WriteLine("Token received: " + tokenResponse.AccessToken);
-                Preferences.Set("OAuthToken", tokenResponse.AccessToken);
-                Preferences.Set("IsUserLoggedIn", true);
+        //    var tokenResponse = await _authService.GetTokenAsync(code);
+        //    if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.AccessToken))
+        //    {
+        //        Debug.WriteLine("Token received: " + tokenResponse.AccessToken);
+        //        Preferences.Set("OAuthToken", tokenResponse.AccessToken);
+        //        Preferences.Set("IsUserLoggedIn", true);
 
-                Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
-                Debug.WriteLine("Redirecting to main page.");
-            }
-            else
-            {
-                Debug.WriteLine("Error: Token response is null or invalid.");
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось получить токен", "OK");
-            }
-        }
+        //        Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
+        //        Debug.WriteLine("Redirecting to main page.");
+        //    }
+        //    else
+        //    {
+        //        Debug.WriteLine("Error: Token response is null or invalid.");
+        //        await Application.Current.MainPage.DisplayAlert("Ошибка", "Не удалось получить токен", "OK");
+        //    }
+        //}
 
 
 
