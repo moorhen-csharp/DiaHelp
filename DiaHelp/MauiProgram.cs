@@ -29,6 +29,7 @@ namespace DiaHelp
             builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
             builder.Services.AddTransient<IWindowService, WindowService>();
             builder.Services.AddSingleton<AuthService>();
+            builder.Services.AddSingleton<IAiChatService, AiChatService>();
 
             //ViewModel
             builder.Services.AddTransient<MainViewModel>();
@@ -42,6 +43,7 @@ namespace DiaHelp
             builder.Services.AddTransient<DiabetesSchoolViewModel>();
             builder.Services.AddTransient<LessonSyringePenViewModel>();
             builder.Services.AddTransient<DiabetesLessonOneViewModel>();
+            builder.Services.AddTransient<AiChatViewModel>();
 
             //View
             builder.Services.AddTransient<MainView>();
@@ -55,6 +57,8 @@ namespace DiaHelp
             builder.Services.AddTransient<DiabetesSchoolView>();
             builder.Services.AddTransient<LessonSyringePenView>();
             builder.Services.AddTransient<DiabetesLessonOneView>();
+            builder.Services.AddTransient<AiChatView>();
+
 
 #if DEBUG
             builder.Logging.AddDebug();

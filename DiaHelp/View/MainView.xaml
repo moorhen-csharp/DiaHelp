@@ -88,6 +88,8 @@
                     
                 </Grid>
             </Border>
+
+            <Button BackgroundColor="#2d2d2f" CornerRadius="40" Text="Чат с ИИ" FontSize="14" FontAttributes="Bold" TextColor="White" WidthRequest="150" HeightRequest="40" HorizontalOptions="Center" Grid.Row="7" Grid.ColumnSpan="6"  Command="{Binding AiChatCommand}"/>
         </Grid>
 
         <!-- NAVBAR -->

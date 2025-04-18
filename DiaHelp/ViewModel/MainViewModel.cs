@@ -21,6 +21,7 @@ namespace DiaHelp.ViewModel
             ProfileCommand = new RelayCommand(Profile);
             BreadUnitCommand = new RelayCommand(BreadUnitGo);
             DiabetesSchoolPageCommand = new RelayCommand(DiabetesSchoolGo);
+            AiChatCommand = new RelayCommand(AiChatGo);
 
         }
         public double CurrentGlucose
@@ -115,6 +116,8 @@ namespace DiaHelp.ViewModel
             CurrentValue = finalValue;
         }
 
+        public void AiChatGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<AiChatViewModel>().View;
+
         private void SugarGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
 
         private void BreadUnitGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<BreadUnitViewModel>().View;
@@ -129,5 +132,6 @@ namespace DiaHelp.ViewModel
         public ICommand ProfileCommand { get; }
         public ICommand BreadUnitCommand { get; }
         public ICommand DiabetesSchoolPageCommand { get; }
+        public ICommand AiChatCommand { get; }
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DiaHelp.View.AiChatView"
+             Title="AiChatView">
+    <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*" Padding="10" RowSpacing="5">
+
+        <!-- Шапка с кнопкой "Назад" -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *">
+            <Button Text="← Назад" Command="{Binding BackCommand}" WidthRequest="80" HorizontalOptions="Start" Margin="0,0,10,0"/>
+
+            <Label Text="Диабет-ассистент" Grid.Column="1" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
+        </Grid>
+
+        <!-- История сообщений -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Messages}"
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,5">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+
+                        <Label Text="{Binding Text}" FontSize="14" TextColor="White" LineBreakMode="WordWrap"/>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Поле ввода и кнопка отправки -->
+        <Grid Grid.Row="2" ColumnDefinitions="*, Auto" ColumnSpacing="10" VerticalOptions="End">
+            <Entry Text="{Binding UserMessage}" Placeholder="Ваш вопрос о диабете..." PlaceholderColor="Gray" ReturnCommand="{Binding SendMessageCommand}" BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#2D2D2D}"/>
+
+            <Button Text="Отправить" Grid.Column="1" Command="{Binding SendMessageCommand}" WidthRequest="100"/>
+        </Grid>
+
+        <!-- Индикатор загрузки -->
+        <ActivityIndicator Grid.RowSpan="3" IsRunning="{Binding IsLoading}"  IsVisible="{Binding IsLoading}"  HorizontalOptions="Center" VerticalOptions="Center" Color="{AppThemeBinding Light=#512BD4, Dark=White}"/>
+    </Grid>
+</ContentPage>
