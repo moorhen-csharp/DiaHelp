@@ -6,7 +6,7 @@ namespace DiaHelp.ViewModel
     public class MainViewModel : BaseViewModel
     {
         private double _currentGlucose;
-        private double _targetGlucose;
+        private double _targetGlucose = 5;
         private double _currentValue;
         private string _result;
         private readonly IDatabaseService _databaseService;
@@ -22,7 +22,6 @@ namespace DiaHelp.ViewModel
             BreadUnitCommand = new RelayCommand(BreadUnitGo);
             DiabetesSchoolPageCommand = new RelayCommand(DiabetesSchoolGo);
             AiChatCommand = new RelayCommand(AiChatGo);
-
         }
         public double CurrentGlucose
         {
