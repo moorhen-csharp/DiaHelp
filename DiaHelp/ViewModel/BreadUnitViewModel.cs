@@ -19,7 +19,7 @@ namespace DiaHelp.ViewModel
         public BreadUnitViewModel(IWindowService windowService) 
         {
             _windowService = windowService;
-            MainCommand = new RelayCommand(MainGo);
+            MainPageCommand = new RelayCommand(MainGo);
             CalculateCommand = new RelayCommand(CalcelateBU);
             InfoCommand = new RelayCommand(InfoDA);
         }
@@ -92,7 +92,7 @@ namespace DiaHelp.ViewModel
         public void MainGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
 
         public ICommand CalculateCommand { get; }
-        public ICommand MainCommand { get; }
+        public ICommand MainPageCommand { get; }
         public ICommand InfoCommand { get; }
 
     }
