@@ -1,11 +1,7 @@
 ﻿using DiaHelp.Interface;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DiaHelp.Services
 {
@@ -53,8 +49,7 @@ namespace DiaHelp.Services
                 var responseJson = await response.Content.ReadAsStringAsync();
                 var responseObject = JsonConvert.DeserializeObject<dynamic>(responseJson);
 
-                return responseObject?.choices[0]?.message?.content?.ToString()
-                    ?? "Не удалось получить ответ";
+                return responseObject?.choices[0]?.message?.content?.ToString() ?? "Не удалось получить ответ";
             }
             catch (Exception ex)
             {

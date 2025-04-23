@@ -23,7 +23,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <!-- Кнопка "Назад" -->
+            <!-- Кнопка Назад -->
             <Button Command="{Binding MainPage}" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="Назад" TextColor="White" FontSize="15" BackgroundColor="#2d2d2f"/>
             <Button Command="{Binding Clear}" HeightRequest="20" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="Очистить" TextColor="White" FontSize="15" BackgroundColor="#2d2d2f"/>
 
@@ -73,7 +73,7 @@
                 </CollectionView>
             </Border>
 
-            <!-- Кнопка "Ввести данные" -->
+            <!-- Кнопка ввода" -->
             <Button Command="{Binding EntryData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Text="Ввести данные" TextColor="White" BackgroundColor="#2d2d2f" />
         </Grid>
     </Grid>
