@@ -1,12 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using DiaHelp.Interface;
 using DiaHelp.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -17,16 +12,18 @@ namespace DiaHelp.ViewModel
         private int _insulinDose;
         private string _selectedSugarType;
         private IWindowService _windowService;
+        private string _selectedHealthType;
         private readonly IDatabaseService _databaseService;
         public ObservableCollection<SugarModel> SugarNotes { get; set; }
 
-        public SugarEntryViewModel(IDatabaseService databaseService, IWindowService windowService) 
+        public SugarEntryViewModel(IDatabaseService databaseService, IWindowService windowService)
         {
             _databaseService = databaseService;
             _windowService = windowService;
             SugarNotePage = new RelayCommand(SugarPage);
             SaveDataCommand = new RelayCommand(SaveSugarNote);
             SelectSugarTypeCommand = new RelayCommand<string>(SelectSugarType);
+            SelectHealthTypeCommand = new RelayCommand<string>(SelectHealthType);
         }
 
         public double SugarLevel
@@ -48,6 +45,15 @@ namespace DiaHelp.ViewModel
                 OnPropertyChanged(nameof(SelectedSugarType));
             }
         }
+        public string SelectedHealthType
+        {
+            get => _selectedHealthType;
+            set
+            {
+                _selectedHealthType = value;
+                OnPropertyChanged(nameof(SelectedHealthType));
+            }
+        }
 
         public int InsulinDose
         {
@@ -59,7 +65,8 @@ namespace DiaHelp.ViewModel
             }
         }
 
-        private void SelectSugarType(string sugarType) =>  SelectedSugarType = sugarType;
+        private void SelectSugarType(string sugarType) => SelectedSugarType = sugarType;
+        private void SelectHealthType(string healthType) => SelectedHealthType = healthType;
 
         private async void SaveSugarNote(object parametr)
         {
@@ -67,6 +74,7 @@ namespace DiaHelp.ViewModel
             {
                 SugarLevel = SugarLevel,
                 MeasurementTime = SelectedSugarType,
+                HealthType = SelectedHealthType,
                 InsulinDose = InsulinDose,
                 Date = DateTime.Now
             };
@@ -77,9 +85,35 @@ namespace DiaHelp.ViewModel
                 return;
             }
 
+            if (SugarLevel <= 3 && SugarLevel >= 2.1)
+            {
+                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Срочно повысьте его.", "ОК");
+            }
+
+            if (SugarLevel <= 2)
+            {
+                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Срочно повысьте его. Рекомендуется вызвать скорую помощь", "ОК");
+            }
+
+            if (SugarLevel >= 20 && SugarLevel <= 29)
+            {
+                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Его нужно срочно понизить!", "ОК");
+            }
+
+            if (SugarLevel >= 30)
+            {
+                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Его нужно срочно понизить! Рекомендуется вызвать скорую помощь.", "ОК");
+            }
+
             if (string.IsNullOrEmpty(SelectedSugarType))
             {
                 await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, выберите тип измерения.", "ОК");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(SelectedHealthType))
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, Введите ваше самочувствие.", "ОК");
                 return;
             }
 
@@ -87,6 +121,7 @@ namespace DiaHelp.ViewModel
             {
                 SugarLevel = 0;
                 SelectedSugarType = null;
+                SelectedHealthType = null;
                 InsulinDose = 0;
 
                 Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
@@ -99,5 +134,6 @@ namespace DiaHelp.ViewModel
         public ICommand SugarNotePage { get; }
         public ICommand SaveDataCommand { get; }
         public ICommand SelectSugarTypeCommand { get; }
+        public ICommand SelectHealthTypeCommand { get; }
     }
 }

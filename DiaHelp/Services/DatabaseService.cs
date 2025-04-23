@@ -49,9 +49,19 @@ namespace DiaHelp.Services
         }
 
         //САХАР
-        public List<SugarModel> GetAllSugarNotes()
+        public async Task<List<SugarModel>> GetAllSugarNotesAsync()
         {
-            return context.SugarNotes.OrderByDescending(note => note.Date).ToList();
+            try
+            {
+                return await context.SugarNotes
+                    .OrderByDescending(note => note.Date) // Сортировка по дате (последние сверху)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при получении записей сахара: {ex.Message}");
+                return [];
+            }
         }
         public bool AddSugarNote(SugarModel sugarNote)
         {

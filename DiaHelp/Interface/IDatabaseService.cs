@@ -9,7 +9,7 @@ namespace DiaHelp.Interface
         UserModel GetUser(string email);
         bool AddUser(UserModel userModel);
 
-        List<SugarModel> GetAllSugarNotes();
+        Task<List<SugarModel>> GetAllSugarNotesAsync();
         bool AddSugarNote(SugarModel sugarNote);
 
         bool ClearAllSugarNotes();
