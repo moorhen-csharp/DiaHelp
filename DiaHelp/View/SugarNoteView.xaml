@@ -62,7 +62,6 @@
                                     <HorizontalStackLayout>
                                         <Label Text="Самочувствие: " VerticalOptions="End"/>
                                         <Label Text="{Binding HealthType}" />
-                                        
                                     </HorizontalStackLayout>
 
                                     <BoxView HeightRequest="2" Color="DarkGray" Margin="0, 20, 0, 0" />
