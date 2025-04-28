@@ -46,7 +46,7 @@
 		<MauiIcon Include="Resources\AppIcon\dia_help_icon.png" Color="0a2543" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Images\dh_splash_screen.jpg" Color="0a2543" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\diahelp_splash.png" Color="#171719"/>
 
 
 		<!-- Images -->
