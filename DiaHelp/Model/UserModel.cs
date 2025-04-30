@@ -15,6 +15,7 @@ namespace DiaHelp.Model
         public string LastName { get; set; }
         public double CoeffInsulin { get; set; }
         public string Email { get; set; }
+        public string? Experience { get; set; }
         public DateTime RegistrationDate { get; set; }
     }
 }
