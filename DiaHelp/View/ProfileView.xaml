@@ -36,10 +36,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Имя:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
                    
                 </Grid>
             </Border>
@@ -52,10 +53,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Фамилия:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding LastName}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding LastName}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                 </Grid>
             </Border>
@@ -68,10 +70,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Почта:" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding Email}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding Email}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                 </Grid>
             </Border>

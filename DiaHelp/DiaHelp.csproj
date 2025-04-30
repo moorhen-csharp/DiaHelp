@@ -43,10 +43,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\dia_help_icon.png" Color="0a2543" />
+		<MauiIcon Include="Resources\AppIcon\icon_dh.png" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\diahelp_splash.png" Color="#171719"/>
+		<MauiSplashScreen Include="Resources\Splash\diahelp_splash.png" Color="#171719" />
 
 
 		<!-- Images -->
@@ -61,7 +61,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\dh_icon.svg" />
 	  <None Remove="Resources\AppIcon\dia_help_icon.png" />
+	  <None Remove="Resources\AppIcon\icon_dh.png" />
 	  <None Remove="Resources\Images\dh_splash_screen.jpg" />
 	</ItemGroup>
 
