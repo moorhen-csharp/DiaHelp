@@ -37,7 +37,6 @@ namespace DiaHelp
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<SugarNoteViewModel>();
             builder.Services.AddTransient<ProfileViewModel>();
-            builder.Services.AddTransient<SugarAverageLevelViewModel>();
             builder.Services.AddTransient<SugarEntryViewModel>();
             builder.Services.AddTransient<BreadUnitViewModel>();
             builder.Services.AddTransient<DiabetesSchoolViewModel>();
@@ -51,7 +50,6 @@ namespace DiaHelp
             builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<SugarNoteView>();
             builder.Services.AddTransient<ProfileView>();
-            builder.Services.AddTransient<SugarAverageLevelView>();
             builder.Services.AddTransient<SugarEntryView>();
             builder.Services.AddTransient<BreadUnitView>();
             builder.Services.AddTransient<DiabetesSchoolView>();

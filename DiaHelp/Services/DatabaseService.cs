@@ -85,7 +85,6 @@ namespace DiaHelp.Services
             {
                 return await context.SugarNotes
                     .Where(n => n.Date >= startDate && n.Date <= endDate)
-                    .OrderByDescending(n => n.Date) // Сортировка по дате (последние сверху)
                     .ToListAsync();
             }
             catch (Exception ex)
