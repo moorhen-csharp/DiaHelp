@@ -43,7 +43,22 @@ namespace DiaHelp.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine($"Ошибка добавления данных { ex.Message}");
+                return false;
+            }
+        }
+
+        public bool UpdateUser(UserModel userModel)
+        {
+            try
+            {
+                context.Users.Update(userModel);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при обновлении данных пользователя: {ex.Message}");
                 return false;
             }
         }

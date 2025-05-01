@@ -1,5 +1,5 @@
 ﻿using DiaHelp.Interface;
-using DiaHelp.Model;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -17,6 +17,7 @@ namespace DiaHelp.ViewModel
         private bool _entryVsbl = false;
         private bool _labelVsbl = true;
         private string _entryExperience;
+        private string _editBtntext = "Изменить";
 
         public ProfileViewModel(IWindowService windowService, IDatabaseService databaseService)
         {
@@ -25,16 +26,14 @@ namespace DiaHelp.ViewModel
             MainPageCommand = new RelayCommand(MainGo);
             _databaseService = databaseService;
             EditCommand = new RelayCommand(EditProfile);
-
             LoadData();
         }
-
+        #region Binding Properties
         public bool LabelVsbl
         {
             get => _labelVsbl;
             set => SetProperty(ref _labelVsbl, value);
         }
-
         public bool EntryVsbl
         {
             get => _entryVsbl;
@@ -75,7 +74,14 @@ namespace DiaHelp.ViewModel
             get => _entryExperience;
             set => SetProperty(ref _entryExperience, value);
         }
+        public string EditBtntext
+        {
+            get => _editBtntext;
+            set => SetProperty(ref _editBtntext, value);
+        }
+        #endregion
 
+        #region Methods
         public void LoadData()
         {
             var username = Preferences.Get("CurrentUsername", string.Empty);
@@ -97,34 +103,39 @@ namespace DiaHelp.ViewModel
 
         public void EditProfile(object parametr)
         {
-           
-
             if (EntryVsbl == false && EntryEnbl == false)
             {
                 EntryEnbl = true;
                 EntryVsbl = true;
                 LabelVsbl = false;
+                EditBtntext = "Сохранить";
             }
+
             else
             {
                 EntryEnbl = false;
                 EntryVsbl = false;
                 LabelVsbl = true;
+                EditBtntext = "Изменить";
 
-
-                var newUser = new UserModel
+                var user = _databaseService.GetUser(Preferences.Get("CurrentUsername", string.Empty));
+                if (user != null)
                 {
-                    Experience = EntryExperience
-                };
-                _databaseService.AddUser(newUser);
+                    // Обновляем поле Experience
+                    user.Experience = EntryExperience;
 
-
-                var user = _databaseService.GetUser(Email);
-
-                user.Experience = EntryExperience;
-
+                    // Сохраняем изменения в базе данных
+                    try
+                    {
+                        _databaseService.UpdateUser(user); // Используем метод UpdateUser
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Ошибка при обновлении данных: {ex.Message}");
+                    }
+                }
+                LoadData();
             }
-            
         }
 
         public void Logout(object parametr)
@@ -134,9 +145,12 @@ namespace DiaHelp.ViewModel
         }
 
         private void MainGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
+        #endregion
 
+        #region ICommand
         public ICommand MainPageCommand { get; }
         public ICommand LogoutCommand { get; }
         public ICommand EditCommand { get; }
+        #endregion
     }
 }

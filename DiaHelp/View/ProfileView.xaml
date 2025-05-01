@@ -107,17 +107,16 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="Стаж болезни:" VerticalOptions="Center" HorizontalOptions="Center" FontSize="13" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="{Binding Experience}" IsVisible="{Binding LabelVsbl}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Label Text="{Binding Experience, StringFormat='{}{0} лет'}" IsVisible="{Binding LabelVsbl}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <Entry Text="{Binding EntryExperience}" IsEnabled="{Binding EntryEnbl}" IsVisible="{Binding EntryVsbl}" Keyboard="Numeric" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                 </Grid>
             </Border>
-            <Label Grid.Row="6" Text="fff"/>
 
             <!--Кнопки-->
             <Button Command="{Binding LogoutCommand}" Text="Выйти" TextColor="White" BackgroundColor="#2d2d2f" CornerRadius="40"  WidthRequest="150" HeightRequest="40" Grid.Row="9" Grid.Column="4"  />
             
-            <Button Command="{Binding EditCommand}"  Text="Изменить" TextColor="White" BackgroundColor="#2d2d2f" CornerRadius="40"  WidthRequest="150" HeightRequest="40" Grid.Row="9" Grid.Column="1"  />
+            <Button Command="{Binding EditCommand}"  Text="{Binding EditBtntext}" TextColor="White" BackgroundColor="#2d2d2f" CornerRadius="40"  WidthRequest="150" HeightRequest="40" Grid.Row="9" Grid.Column="1"  />
         </Grid>
 
         <!-- NAVBAR -->
