@@ -86,6 +86,9 @@
 	  <MauiXaml Update="View\AiChatView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\BreadUnitTableView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\BreadUnitView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -1,9 +1,4 @@
 ﻿using DiaHelp.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel
@@ -16,12 +11,13 @@ namespace DiaHelp.ViewModel
         private IWindowService _windowService;
         private double _currentValue;
 
-        public BreadUnitViewModel(IWindowService windowService) 
+        public BreadUnitViewModel(IWindowService windowService)
         {
             _windowService = windowService;
             MainPageCommand = new RelayCommand(MainGo);
             CalculateCommand = new RelayCommand(CalcelateBU);
             InfoCommand = new RelayCommand(InfoDA);
+            BUTableCommand = new RelayCommand(BUTableGo);
         }
 
         public double Carbohydrates
@@ -91,9 +87,11 @@ namespace DiaHelp.ViewModel
 
         public void MainGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
 
+        public void BUTableGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<BreadUnitTableViewModel>().View;
+
         public ICommand CalculateCommand { get; }
         public ICommand MainPageCommand { get; }
         public ICommand InfoCommand { get; }
-
+        public ICommand BUTableCommand { get; }
     }
 }

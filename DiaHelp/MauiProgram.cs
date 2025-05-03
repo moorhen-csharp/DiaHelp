@@ -43,6 +43,7 @@ namespace DiaHelp
             builder.Services.AddTransient<LessonSyringePenViewModel>();
             builder.Services.AddTransient<DiabetesLessonOneViewModel>();
             builder.Services.AddTransient<AiChatViewModel>();
+            builder.Services.AddTransient<BreadUnitTableViewModel>();
 
             //View
             builder.Services.AddTransient<MainView>();
@@ -56,6 +57,7 @@ namespace DiaHelp
             builder.Services.AddTransient<LessonSyringePenView>();
             builder.Services.AddTransient<DiabetesLessonOneView>();
             builder.Services.AddTransient<AiChatView>();
+            builder.Services.AddTransient<BreadUnitTableView>();
 
 
 #if DEBUG

@@ -6,24 +6,24 @@
     <Grid RowDefinitions="*,Auto" BackgroundColor="#171719">
         <Grid Grid.Row="0" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
                 <RowDefinition/>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
 
@@ -97,16 +97,18 @@
 
                 </Grid>
             </Border>
+
+            <Button BackgroundColor="#2d2d2f" CornerRadius="40" Text="Таблица ХЕ" FontAttributes="Bold" TextColor="White" WidthRequest="150" HeightRequest="40" HorizontalOptions="Center" Grid.Row="6" Grid.ColumnSpan="6" Margin="5" Command="{Binding BUTableCommand}"/>
         </Grid>
 
         <!-- NAVBAR -->
         <Grid Grid.Row="1" BackgroundColor="Gray" HeightRequest="60">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <ImageButton Source="school.png" Command="{Binding DiabetesSchoolPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
