@@ -4,7 +4,7 @@
              x:Class="DiaHelp.View.BreadUnitTableView"
              Title="BreadUnitTableView">
     <Grid RowDefinitions="*,Auto" BackgroundColor="#171719">
-        <Grid Grid.Row="0" >
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -27,35 +27,34 @@
             </Grid.ColumnDefinitions>
 
 
+            
+
             <Label Text="Таблица ХЕ" TextColor="DimGray" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,10,0,20"/>
 
             <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="9">
                 
             </Border>
             <!--надпись-->
-            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                
-                <Border Grid.Column="0" Grid.ColumnSpan="2">
-                    <Label Text="Продукт" HorizontalOptions="Center" VerticalOptions='Center' />
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="0, 0, -3, -7">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.ColumnSpan="2" Text="Продукт" HorizontalOptions="Center" VerticalOptions='Center' />
+                        <BoxView Grid.Column="2" WidthRequest="1" Color="DarkGray" HorizontalOptions="Start"/>
+                        <Label Grid.Column="2" Grid.ColumnSpan="4" Text="Количество продукта на 1 ХЕ" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
                 </Border>
-                
-                <Border Grid.Column="2" Grid.ColumnSpan="4">
-                    <Label Text="Количество продукта на 1 ХЕ" HorizontalOptions="Center" VerticalOptions="Center"/>
-                </Border>
-                
-            </Grid>
+
             
             <!--таблица-->
-            <ScrollView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="8" Margin="10">
-                    <CollectionView ItemsSource="{Binding Products}">
+            <ScrollView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="8" Margin="6">
+                <CollectionView ItemsSource="{Binding Products}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -69,10 +68,14 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ProductName}" VerticalOptions="Center"/>
-                                    <Label Grid.Column="2" Grid.ColumnSpan="3" Text="{Binding ProductWeight}" VerticalOptions="Center"/>
-                                    <Label Grid.Column="5" Text="{Binding QuantityPerXE, StringFormat='{0:F2} г'}" VerticalOptions="Center"/>
+                                    <BoxView Grid.Column="0" Grid.ColumnSpan="4" WidthRequest="1" Color="DarkGray"/>
+                                    
+                                    <Label Grid.Column="2" Grid.ColumnSpan="3" Text="{Binding ProductWeight}" VerticalOptions="Center" HorizontalOptions="Center" Margin="10"/>
+                                    <BoxView Grid.Column="4" Grid.ColumnSpan="2" WidthRequest="1" Color="DarkGray"/>
+                                    
+                                    <Label Grid.Column="5" Text="{Binding QuantityPerXE, StringFormat='{0:F2} г'}" VerticalOptions="Center" HorizontalOptions="Center"/>
                                     <BoxView HeightRequest="2" Color="DarkGray" Margin="0, 80, 0, 0" Grid.ColumnSpan="6"/>
-                                </Grid>
+                            </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -94,7 +97,7 @@
 
             <Button Text="ХЕ" Command="{Binding BreadUnitCommand}" FontSize="14" TextColor="White" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
 
-            <ImageButton Source="main.png" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+            <ImageButton Source="main.png" Command="{Binding MainPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
 
             <ImageButton Source="notes.png" Command="{Binding SugarPageCommand}" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3"/>
 
