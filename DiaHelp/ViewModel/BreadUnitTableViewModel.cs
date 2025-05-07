@@ -15,6 +15,7 @@ namespace DiaHelp.ViewModel
             _windowService = windowService;
             MainPageCommand = new RelayCommand(MainGo);
             Products = new ObservableCollection<ProductItem>();
+            BackCommand = new RelayCommand(BUGo);
             LoadDataAsync();
         }
         public ObservableCollection<ProductItem> Products
@@ -61,8 +62,11 @@ namespace DiaHelp.ViewModel
             Products = new ObservableCollection<ProductItem>(productsToAdd);
         }
 
+        public void BUGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<BreadUnitViewModel>().View;
+
         private void MainGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
 
         public ICommand MainPageCommand { get; }
+        public ICommand BackCommand { get; }
     }
 }

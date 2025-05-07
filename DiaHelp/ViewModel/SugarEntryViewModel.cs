@@ -14,6 +14,7 @@ namespace DiaHelp.ViewModel
         private IWindowService _windowService;
         private string _selectedHealthType;
         private readonly IDatabaseService _databaseService;
+        private bool _isNotMeasured;
         public ObservableCollection<SugarModel> SugarNotes { get; set; }
 
         public SugarEntryViewModel(IDatabaseService databaseService, IWindowService windowService)
@@ -24,6 +25,17 @@ namespace DiaHelp.ViewModel
             SaveDataCommand = new RelayCommand(SaveSugarNote);
             SelectSugarTypeCommand = new RelayCommand<string>(SelectSugarType);
             SelectHealthTypeCommand = new RelayCommand<string>(SelectHealthType);
+            NotMeasuredCommand = new RelayCommand(NotMeasured);
+        }
+
+        public bool IsNotMeasured
+        {
+            get => _isNotMeasured;
+            set
+            {
+                _isNotMeasured = value;
+                OnPropertyChanged(nameof(IsNotMeasured));
+            }
         }
 
         public double SugarLevel
@@ -68,43 +80,14 @@ namespace DiaHelp.ViewModel
         private void SelectSugarType(string sugarType) => SelectedSugarType = sugarType;
         private void SelectHealthType(string healthType) => SelectedHealthType = healthType;
 
+        private void NotMeasured(object parametr)
+        {
+            IsNotMeasured = true;
+            SugarLevel = 0;
+        }
+
         private async void SaveSugarNote(object parametr)
         {
-            var sugarNote = new SugarModel
-            {
-                SugarLevel = SugarLevel,
-                MeasurementTime = SelectedSugarType,
-                HealthType = SelectedHealthType,
-                InsulinDose = InsulinDose,
-                Date = DateTime.Now
-            };
-
-            if (SugarLevel <= 0)
-            {
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Уровень сахара не может быть меньше или равен 0.", "ОК");
-                return;
-            }
-
-            if (SugarLevel <= 3 && SugarLevel >= 2.1)
-            {
-                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Срочно повысьте его.", "ОК");
-            }
-
-            if (SugarLevel <= 2)
-            {
-                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Срочно повысьте его. Рекомендуется вызвать скорую помощь", "ОК");
-            }
-
-            if (SugarLevel >= 20 && SugarLevel <= 29)
-            {
-                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Его нужно срочно понизить!", "ОК");
-            }
-
-            if (SugarLevel >= 30)
-            {
-                await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Его нужно срочно понизить! Рекомендуется вызвать скорую помощь.", "ОК");
-            }
-
             if (string.IsNullOrEmpty(SelectedSugarType))
             {
                 await Application.Current.MainPage.DisplayAlert("Ошибка", "Пожалуйста, выберите тип измерения.", "ОК");
@@ -117,12 +100,51 @@ namespace DiaHelp.ViewModel
                 return;
             }
 
+            if (!IsNotMeasured && SugarLevel <= 0)
+            {
+                await Application.Current.MainPage.DisplayAlert("Ошибка", "Уровень сахара не может быть меньше или равен 0.", "ОК");
+                return;
+            }
+
+            if (!IsNotMeasured)
+            {
+                if (SugarLevel <= 3 && SugarLevel >= 2.1)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Срочно повысьте его.", "ОК");
+                }
+
+                if (SugarLevel <= 2)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Срочно повысьте его. Рекомендуется вызвать скорую помощь", "ОК");
+                }
+
+                if (SugarLevel >= 20 && SugarLevel <= 29)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Его нужно срочно понизить!", "ОК");
+                }
+
+                if (SugarLevel >= 30)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Внимание!", $"Ваш уровень сахара = {SugarLevel}, Его нужно срочно понизить! Рекомендуется вызвать скорую помощь.", "ОК");
+                }
+            }
+
+            var sugarNote = new SugarModel
+            {
+                SugarLevel = IsNotMeasured ? -1 : SugarLevel,
+                MeasurementTime = SelectedSugarType,
+                HealthType = SelectedHealthType,
+                InsulinDose = InsulinDose,
+                Date = DateTime.Now
+            };
+
             if (_databaseService.AddSugarNote(sugarNote))
             {
                 SugarLevel = 0;
                 SelectedSugarType = null;
                 SelectedHealthType = null;
                 InsulinDose = 0;
+                IsNotMeasured = false;
 
                 Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
             }
@@ -135,5 +157,6 @@ namespace DiaHelp.ViewModel
         public ICommand SaveDataCommand { get; }
         public ICommand SelectSugarTypeCommand { get; }
         public ICommand SelectHealthTypeCommand { get; }
+        public ICommand NotMeasuredCommand { get; }
     }
 }

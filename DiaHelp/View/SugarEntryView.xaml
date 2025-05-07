@@ -42,6 +42,7 @@
                     
                     <Label Grid.Row="0" Margin="10" FontSize="18" FontAttributes="Bold" Text="Сахар в крови (ммоль/л)"/>
                     <Entry Grid.Row="1" HorizontalOptions="Center" WidthRequest="70" HeightRequest="60" HorizontalTextAlignment="Center" Placeholder="0" FontSize="25" Text="{Binding SugarLevel}" Keyboard="Numeric" />
+                    <Button Grid.Row="2" Text="Не измерял" Command="{Binding NotMeasuredCommand}" BackgroundColor="#2d2d2f" TextColor="White" Margin="10" HeightRequest="40" CornerRadius="20"/>
                 
                 </Grid>
             
@@ -64,7 +65,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}" BackgroundColor="Gray" CommandParameter="Натощак" CornerRadius="100"/>
+                            <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}" BackgroundColor="Gray" CommandParameter="Натощак" CornerRadius="100" />
                             <Label Grid.Row="1" Text="Натощак" FontSize="12" HorizontalOptions="Center" />
                         </Grid>
 

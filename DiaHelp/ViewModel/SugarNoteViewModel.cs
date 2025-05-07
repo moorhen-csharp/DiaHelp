@@ -114,7 +114,8 @@ namespace DiaHelp.ViewModel
             };
 
             var notes = await _databaseService.GetSugarNotesByPeriod(startDate, endDate);
-            Average = notes.Any() ? notes.Average(n => n.SugarLevel) : 0;
+            var validNotes = notes.Where(n => n.SugarLevel != -1).ToList();
+            Average = validNotes.Any() ? validNotes.Average(n => n.SugarLevel) : 0;
         }
 
         private async Task LoadSugarNotesAsync()

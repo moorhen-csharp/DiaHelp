@@ -69,8 +69,8 @@
                             <Grid Padding="10">
                                 <StackLayout>
                                     <HorizontalStackLayout>
-                                        <Label Text="{Binding SugarLevel}" FontSize="18"/>
-                                        <Label Text=" ммоль/л" VerticalOptions="End"/>
+                                        <Label Text="{Binding SugarLevel, Converter={StaticResource SugarLevelConverter}}" FontSize="18"/>
+                                        <Label Text=" ммоль/л" VerticalOptions="End" IsVisible="{Binding SugarLevel, Converter={StaticResource SugarLevelVisibilityConverter}}"/>
                                     </HorizontalStackLayout>
 
                                     <HorizontalStackLayout>
