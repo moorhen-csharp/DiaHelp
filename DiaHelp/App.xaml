@@ -12,6 +12,8 @@
             </ResourceDictionary.MergedDictionaries>
             <converters:SugarLevelConverter x:Key="SugarLevelConverter"/>
             <converters:SugarLevelVisibilityConverter x:Key="SugarLevelVisibilityConverter"/>
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <converters:BooleanToColorConverter x:Key="BooleanToColorConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

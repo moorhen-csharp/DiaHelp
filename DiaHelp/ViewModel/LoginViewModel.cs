@@ -1,7 +1,5 @@
 ﻿using DiaHelp.Interface;
 using DiaHelp.Services;
-using System.Diagnostics;
-using System.Web;
 using System.Windows.Input;
 
 namespace DiaHelp.ViewModel

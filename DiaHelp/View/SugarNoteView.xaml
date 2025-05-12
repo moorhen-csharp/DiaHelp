@@ -51,12 +51,12 @@
 
                     <Label Text="{Binding Average, StringFormat=' {0:F1} ммоль/л'}" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
                 </Grid>
-               
+
             </Border>
-            
+
 
             <Label Text="Список Пуст" IsVisible="{Binding IsListEmpty}" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="4"  HorizontalOptions="Center" TextColor="#3b3b3b" FontSize="30" Margin="10"/>
-            
+
             <!-- Список записей -->
             <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center" IsVisible="{Binding BorderVsbl}"  BackgroundColor="#3b3b3b" Margin="0, 15, 0, 0" >
                 <Border.StrokeShape>
@@ -86,7 +86,7 @@
                                         <Label Text="{Binding InsulinDose}" />
                                         <Label Text=" ед" VerticalOptions="End"/>
                                     </HorizontalStackLayout>
-                                    
+
                                     <HorizontalStackLayout>
                                         <Label Text="Самочувствие: " VerticalOptions="End"/>
                                         <Label Text="{Binding HealthType}" />
