@@ -9,11 +9,13 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Animations.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:SugarLevelConverter x:Key="SugarLevelConverter"/>
             <converters:SugarLevelVisibilityConverter x:Key="SugarLevelVisibilityConverter"/>
             <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
             <converters:BooleanToColorConverter x:Key="BooleanToColorConverter"/>
+            <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

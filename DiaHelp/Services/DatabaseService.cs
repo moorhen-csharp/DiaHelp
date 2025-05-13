@@ -3,11 +3,15 @@ using DiaHelp.Interface;
 using DiaHelp.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace DiaHelp.Services
 {
     public class DatabaseService(ApplicationContext context) : IDatabaseService
     {
+
+        
+
         public bool ClearAllSugarNotes()
         {
             try
@@ -68,9 +72,7 @@ namespace DiaHelp.Services
         {
             try
             {
-                return await context.SugarNotes
-                    .OrderByDescending(note => note.Date) // Сортировка по дате (последние сверху)
-                    .ToListAsync();
+                return await context.SugarNotes.OrderByDescending(note => note.Date).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -78,6 +80,7 @@ namespace DiaHelp.Services
                 return [];
             }
         }
+
         public bool AddSugarNote(SugarModel sugarNote)
         {
             try
@@ -106,6 +109,51 @@ namespace DiaHelp.Services
             {
                 Debug.WriteLine($"Ошибка: {ex.Message}");
                 return [];
+            }
+        }
+        
+        //ЕДА
+        public async Task<List<FoodModel>> GetAllFoodNotesAsync()
+        {
+            try
+            {
+                return await context.FoodNotes.OrderByDescending(note => note.Date).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при получении записей еды: {ex.Message}");
+                return [];
+            }
+        }
+
+        public async Task<List<FoodModel>> GetFoodNotesByPeriod(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return await context.FoodNotes
+                    .Where(n => n.Date >= startDate && n.Date <= endDate)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка: {ex.Message}");
+                return [];
+            }
+        }
+
+        public bool ClearAllFoodNotes()
+        {
+            try
+            {
+                var allFoodNotes = context.FoodNotes.ToList();
+                context.FoodNotes.RemoveRange(allFoodNotes);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при удалении записей: {ex.Message}");
+                return false;
             }
         }
     }

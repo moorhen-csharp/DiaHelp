@@ -51,14 +51,12 @@
 
                     <Label Text="{Binding Average, StringFormat=' {0:F1} ммоль/л'}" FontSize="20" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
                 </Grid>
-
             </Border>
-
 
             <Label Text="Список Пуст" IsVisible="{Binding IsListEmpty}" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="4"  HorizontalOptions="Center" TextColor="#3b3b3b" FontSize="30" Margin="10"/>
 
-            <!-- Список записей -->
-            <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center" IsVisible="{Binding BorderVsbl}"  BackgroundColor="#3b3b3b" Margin="0, 15, 0, 0" >
+            <!-- Список записей сахара -->
+            <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center" IsVisible="{Binding IsSugarListVisible}"  BackgroundColor="#3b3b3b" Margin="0, 15, 0, 0" >
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
@@ -100,8 +98,53 @@
                 </CollectionView>
             </Border>
 
-            <!-- Кнопка ввода" -->
-            <Button Command="{Binding EntryData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Text="Ввести данные" TextColor="White" BackgroundColor="#2d2d2f" />
+            <!-- Список записей еды -->
+            <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalOptions="Center" IsVisible="{Binding IsFoodListVisible}"  BackgroundColor="#3b3b3b" Margin="0, 15, 0, 0" >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+
+                <CollectionView ItemsSource="{Binding FoodNotes}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <StackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label Text="{Binding FoodName}" FontSize="18"/>
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout>
+                                        <Label Text="{Binding Date}" />
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout>
+                                        <Label Text="{Binding Time}" />
+                                    </HorizontalStackLayout>
+
+                                    <BoxView HeightRequest="2" Color="DarkGray" Margin="0, 20, 0, 0" />
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+            
+            <HorizontalStackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="Center">
+                <Button Command="{Binding ShowSugarList}" Text="Сахар" TextColor="White" HeightRequest="50" WidthRequest="80" CornerRadius="25" 
+                        BackgroundColor="{Binding IsSugarListVisible, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#2d2d2f,#4CAF50'}"/>
+                <Button Command="{Binding ShowFoodList}" Text="Еда" TextColor="White" HeightRequest="50" WidthRequest="80" CornerRadius="25" 
+                        BackgroundColor="{Binding IsFoodListVisible, Converter={StaticResource BoolToColorConverter}, ConverterParameter='#2d2d2f,#4CAF50'}"/>
+            </HorizontalStackLayout>
+            
+            <!-- Кнопка ввода для сахара -->
+            <Button Command="{Binding EntryData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" 
+                    Text="Ввести данные" TextColor="White" BackgroundColor="#2d2d2f" 
+                    IsVisible="{Binding IsSugarListVisible}"/>
+            
+            <!-- Кнопка ввода для еды -->
+            <Button Command="{Binding FoodEntryData}" HeightRequest="50" CornerRadius="25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" 
+                    Text="Ввести данные" TextColor="White" BackgroundColor="#2d2d2f" 
+                    IsVisible="{Binding IsFoodListVisible}"/>
         </Grid>
     </Grid>
 </ContentPage>

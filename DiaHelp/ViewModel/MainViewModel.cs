@@ -1,5 +1,6 @@
 ﻿using DiaHelp.Interface;
 using System.Windows.Input;
+using DiaHelp.Infrastructure;
 
 namespace DiaHelp.ViewModel
 {
@@ -115,16 +116,35 @@ namespace DiaHelp.ViewModel
             CurrentValue = finalValue;
         }
 
-        public void AiChatGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<AiChatViewModel>().View;
+        public async void AiChatGo(object parametr)
+        {
+            var page = _windowService.GetAndCreateContentPage<AiChatViewModel>().View;
+            await PageTransitionHelper.AnimateTransition(page, true);
+        }
 
-        private void SugarGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
+        private async void SugarGo(object parameter)
+        {
+            var page = _windowService.GetAndCreateContentPage<SugarNoteViewModel>().View;
+            await PageTransitionHelper.AnimateTransition(page, true);
+        }
 
-        private void BreadUnitGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<BreadUnitViewModel>().View;
+        private async void BreadUnitGo(object parametr)
+        {
+            var page = _windowService.GetAndCreateContentPage<BreadUnitViewModel>().View;
+            await PageTransitionHelper.AnimateTransition(page, true);
+        }
 
-        private void Profile(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<ProfileViewModel>().View;
+        private async void Profile(object parameter)
+        {
+            var page = _windowService.GetAndCreateContentPage<ProfileViewModel>().View;
+            await PageTransitionHelper.AnimateTransition(page, true);
+        }
 
-        private void DiabetesSchoolGo(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<DiabetesSchoolViewModel>().View;
-
+        private async void DiabetesSchoolGo(object parametr)
+        {
+            var page = _windowService.GetAndCreateContentPage<DiabetesSchoolViewModel>().View;
+            await PageTransitionHelper.AnimateTransition(page, true);
+        }
 
         public ICommand SugarPageCommand { get; }
         public ICommand CalculateCommand { get; }

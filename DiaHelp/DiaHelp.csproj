@@ -98,6 +98,9 @@
 	  <MauiXaml Update="View\DiabetesSchoolView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\FoodEntryView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\LessonSyringePenView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

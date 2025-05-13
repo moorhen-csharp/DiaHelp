@@ -16,5 +16,9 @@ namespace DiaHelp.Interface
         bool ClearAllSugarNotes();
 
         Task<List<SugarModel>> GetSugarNotesByPeriod(DateTime startDate, DateTime endDate);
+
+        Task<List<FoodModel>> GetAllFoodNotesAsync();
+        Task<List<FoodModel>> GetFoodNotesByPeriod(DateTime startDate, DateTime endDate);
+        bool ClearAllFoodNotes();
     }
 }

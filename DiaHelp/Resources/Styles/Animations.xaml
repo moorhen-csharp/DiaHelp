@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!-- Анимация появления справа налево -->
+    <Style x:Key="SlideFromRight" TargetType="ContentPage">
+        <Setter Property="TranslationX" Value="500" />
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup>
+                    <VisualState x:Name="Appearing">
+                        <VisualState.Setters>
+                            <Setter Property="TranslationX" Value="0" />
+                            <Setter Property="Opacity" Value="1" />
+                        </VisualState.Setters>
+                        <VisualState.StateTriggers>
+                            <StateTrigger IsActive="True" />
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- Анимация появления слева направо -->
+    <Style x:Key="SlideFromLeft" TargetType="ContentPage">
+        <Setter Property="TranslationX" Value="-500" />
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup>
+                    <VisualState x:Name="Appearing">
+                        <VisualState.Setters>
+                            <Setter Property="TranslationX" Value="0" />
+                            <Setter Property="Opacity" Value="1" />
+                        </VisualState.Setters>
+                        <VisualState.StateTriggers>
+                            <StateTrigger IsActive="True" />
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+</ResourceDictionary> 
