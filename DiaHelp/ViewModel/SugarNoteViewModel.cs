@@ -14,10 +14,10 @@ namespace DiaHelp.ViewModel
         private string _selectedPeriod = "3 Месяца";
         private double _average;
         private bool _isSugarListVisible = true;
-        public List<string> Periods { get; }
-
         private decimal _sugarLevel { get; set; }
         public string _measurementTime { get; set; }
+
+        public List<string> Periods { get; }
         public ObservableCollection<SugarModel> SugarNotes { get; set; }
         public ObservableCollection<FoodModel> FoodNotes { get; set; }
 
@@ -188,12 +188,6 @@ namespace DiaHelp.ViewModel
             LoadSugarNotesAsync();
         }
 
-        private void MainGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
-
-        public void EntryPage(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarEntryViewModel>().View;
-
-        public void FoodEntryPage(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<FoodEntryViewModel>().View;
-
         private void OnShowSugarList(object parameter)
         {
             IsSugarListVisible = true;
@@ -205,6 +199,12 @@ namespace DiaHelp.ViewModel
             IsSugarListVisible = false;
             IsListEmpty = FoodNotes.Count == 0;
         }
+
+        private void MainGo(object parameter) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<MainViewModel>().View;
+
+        public void EntryPage(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<SugarEntryViewModel>().View;
+
+        public void FoodEntryPage(object parametr) => Application.Current.MainPage = _windowService.GetAndCreateContentPage<FoodEntryViewModel>().View;
 
         public ICommand MainPage { get; }
         public ICommand Clear { get; }

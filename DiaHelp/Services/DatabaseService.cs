@@ -111,8 +111,24 @@ namespace DiaHelp.Services
                 return [];
             }
         }
-        
+
         //ЕДА
+
+        public bool AddFoodNote(FoodModel foodNote)
+        {
+            try
+            {
+                foodNote.Id = context.FoodNotes.Count() == 0 ? 1 : context.FoodNotes.Max(p => p.Id) + 1;
+                context.FoodNotes.Add(foodNote);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+        }
         public async Task<List<FoodModel>> GetAllFoodNotesAsync()
         {
             try

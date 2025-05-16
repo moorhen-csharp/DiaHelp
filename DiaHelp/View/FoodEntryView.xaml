@@ -37,21 +37,20 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" Margin="10" FontSize="18" FontAttributes="Bold" Text="Сахар в крови (ммоль/л)"/>
-                    <Entry Grid.Row="1" HorizontalOptions="Center" WidthRequest="70" HeightRequest="60" HorizontalTextAlignment="Center" Placeholder="0" FontSize="25" Text="{Binding SugarLevel}" Keyboard="Numeric" />
-                    <Button Grid.Row="2" Text="Не измерял" Command="{Binding NotMeasuredCommand}" BackgroundColor="#2d2d2f" TextColor="White" Margin="10" HeightRequest="40" CornerRadius="20"/>
+                    <Label Grid.Row="0" Margin="10" FontSize="18" FontAttributes="Bold" Text="Название блюда"/>
+                    <Entry Grid.Row="1" HorizontalOptions="Center" WidthRequest="300" HeightRequest="60" HorizontalTextAlignment="Center" Placeholder="Например: Бургер" FontSize="25" Text="{Binding FoodName}"/>
 
                 </Grid>
 
             </Border>
 
-            <!--статус-->
+            <!--прием пищи-->
             <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="0,10,0,20" BackgroundColor="#3b3b3b" >
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
                 <Grid>
-                    <Label HorizontalOptions="Start" Margin="10" FontSize="18" FontAttributes="Bold" Text="Выбор текущего статуса"/>
+                    <Label HorizontalOptions="Start" Margin="10" FontSize="18" FontAttributes="Bold" Text="Прием пищи"/>
 
                     <HorizontalStackLayout HorizontalOptions="Center"  >
 
@@ -61,8 +60,8 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}" BackgroundColor="Gray" CommandParameter="Натощак" CornerRadius="100" />
-                            <Label Grid.Row="1" Text="Натощак" FontSize="12" HorizontalOptions="Center" />
+                            <Button Grid.Row="0" Command="{Binding SelectFoodTypeCommand}" BackgroundColor="Gray" CommandParameter="Завтрак" CornerRadius="100" />
+                            <Label Grid.Row="1" Text="Завтрак" FontSize="12" HorizontalOptions="Center" WidthRequest="60" />
                         </Grid>
 
                         <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
@@ -71,10 +70,10 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Row="0" Command="{Binding SelectSugarTypeCommand}"  BackgroundColor="Gray" CommandParameter="До еды" CornerRadius="100"/>
+                            <Button Grid.Row="0" Command="{Binding SelectFoodTypeCommand}"  BackgroundColor="Gray" CommandParameter="Обед" CornerRadius="100"/>
 
 
-                            <Label Grid.Row="1"  Text="До еды"  FontSize="12"  HorizontalOptions="Center"  />
+                            <Label Grid.Row="1"  Text="Обед"  FontSize="12"  HorizontalOptions="Center"  />
                         </Grid>
 
                         <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
@@ -83,78 +82,46 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Row="0"   Command="{Binding SelectSugarTypeCommand}"  BackgroundColor="Gray"  CommandParameter="После еды" CornerRadius="100"/>
+                            <Button Grid.Row="0"   Command="{Binding SelectFoodTypeCommand}"  BackgroundColor="Gray"  CommandParameter="Ужин" CornerRadius="100"/>
 
 
-                            <Label Grid.Row="1"  Text="После еды" FontSize="12"  HorizontalOptions="Center" />
-                        </Grid>
-
-                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="0"  Command="{Binding SelectSugarTypeCommand}" BackgroundColor="Gray"  CommandParameter="До сна"   CornerRadius="100"/>
-                            <Label Grid.Row="1"  Text="До сна" FontSize="12" HorizontalOptions="Center" />
+                            <Label Grid.Row="1"  Text="Ужин" FontSize="12"  HorizontalOptions="Center" />
                         </Grid>
                     </HorizontalStackLayout>
                 </Grid>
 
             </Border>
 
-            <!--самочувствие-->
+            <!--категория-->
             <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="0,0,0,20" BackgroundColor="#3b3b3b" >
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
                 <Grid>
-                    <Label HorizontalOptions="Start" Margin="10" FontSize="18" FontAttributes="Bold" Text="Самочувствие"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Margin="10" FontSize="18" FontAttributes="Bold" Text="Категория"/>
+                    <Label Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" Margin="10" FontSize="18" FontAttributes="Bold" Text="Вес"/>
+           
+                    <Picker Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Center"  >
-
-                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Button Grid.Row="0" Command="{Binding SelectHealthTypeCommand}" BackgroundColor="Gray" CommandParameter="Отличное" CornerRadius="100"/>
-                            <Label Grid.Row="1" Text="Отличное" FontSize="12" HorizontalOptions="Center" WidthRequest="66"/>
-                        </Grid>
-
-                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Button Grid.Row="0" Command="{Binding SelectHealthTypeCommand}"  BackgroundColor="Gray" CommandParameter="Хорошее" CornerRadius="100"/>
-
-
-                            <Label Grid.Row="1"  Text="Хорошее"  FontSize="12"  HorizontalOptions="Center"  WidthRequest="60" />
-                        </Grid>
-
-                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Button Grid.Row="0"   Command="{Binding SelectHealthTypeCommand}"  BackgroundColor="Gray"  CommandParameter="Среднее" CornerRadius="100"/>
-
-
-                            <Label Grid.Row="1"  Text="Среднее" FontSize="12"  HorizontalOptions="Center" WidthRequest="55" />
-                        </Grid>
-
-                        <Grid HeightRequest="60" WidthRequest="60" Padding="5" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="0"  Command="{Binding SelectHealthTypeCommand}" BackgroundColor="Gray"  CommandParameter="Плохое"   CornerRadius="100"/>
-                            <Label Grid.Row="1"  Text="Плохое" FontSize="12" HorizontalOptions="Center" />
-                        </Grid>
-                    </HorizontalStackLayout>
+                    <Entry Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2" Keyboard="Numeric" Text="{Binding Weight}"/>
                 </Grid>
 
             </Border>
@@ -170,7 +137,7 @@
 
                     <HorizontalStackLayout   HorizontalOptions="End"  VerticalOptions="Center"  Spacing="5">
 
-                        <Entry WidthRequest="80"  HorizontalOptions="Start" Placeholder="0" PlaceholderColor="Gray" Text="{Binding InsulinDose}"  Keyboard="Numeric"/>
+                        <Entry WidthRequest="80"  HorizontalOptions="Start" Placeholder="0" PlaceholderColor="Gray" Text="{Binding InsulinFromFood}"  Keyboard="Numeric"/>
                         <Label Text="ед" FontSize="16"  TextColor="White"  VerticalOptions="Center" />
 
                     </HorizontalStackLayout>

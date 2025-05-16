@@ -110,15 +110,35 @@
                             <Grid Padding="10">
                                 <StackLayout>
                                     <HorizontalStackLayout>
-                                        <Label Text="{Binding FoodName}" FontSize="18"/>
+                                        <Label Text="Название блюда: " />
+                                        <Label Text="{Binding FoodName}" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout>
+                                        <Label Text="Прием пищи: " />
+                                        <Label Text="{Binding FoodType}" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout>
+                                        <Label Text="Категория: "/>
+
+                                        <Label Text="{Binding Category}" />
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label Text="Вес: "/>
+                                        <Label Text="{Binding Weight}"/>
+                                        <Label Text="г"/>
+
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout>
+                                        <Label Text="Количество инсулина на еду: "/>
+
+                                        <Label Text="{Binding InsulinFromFood}"/>
                                     </HorizontalStackLayout>
 
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding Date}" />
-                                    </HorizontalStackLayout>
-
-                                    <HorizontalStackLayout>
-                                        <Label Text="{Binding Time}" />
                                     </HorizontalStackLayout>
 
                                     <BoxView HeightRequest="2" Color="DarkGray" Margin="0, 20, 0, 0" />
