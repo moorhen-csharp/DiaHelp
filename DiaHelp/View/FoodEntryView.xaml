@@ -59,8 +59,11 @@
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-
-                            <Button Grid.Row="0" Command="{Binding SelectFoodTypeCommand}" BackgroundColor="Gray" CommandParameter="Завтрак" CornerRadius="100" />
+                            <Button  Command="{Binding SelectFoodTypeCommand}"  CommandParameter="Завтрак"  CornerRadius="100">
+                                <Button.BackgroundColor>
+                                    <Binding  Path="SelectedFoodType"  Converter="{StaticResource StatusToColorConverter}"  ConverterParameter="Завтрак" />
+                                </Button.BackgroundColor>
+                            </Button>
                             <Label Grid.Row="1" Text="Завтрак" FontSize="12" HorizontalOptions="Center" WidthRequest="60" />
                         </Grid>
 
@@ -70,7 +73,11 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Row="0" Command="{Binding SelectFoodTypeCommand}"  BackgroundColor="Gray" CommandParameter="Обед" CornerRadius="100"/>
+                            <Button  Command="{Binding SelectFoodTypeCommand}"  CommandParameter="Обед"  CornerRadius="100">
+                                <Button.BackgroundColor>
+                                    <Binding  Path="SelectedFoodType"  Converter="{StaticResource StatusToColorConverter}"  ConverterParameter="Обед" />
+                                </Button.BackgroundColor>
+                            </Button>
 
 
                             <Label Grid.Row="1"  Text="Обед"  FontSize="12"  HorizontalOptions="Center"  />
@@ -82,9 +89,11 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Row="0"   Command="{Binding SelectFoodTypeCommand}"  BackgroundColor="Gray"  CommandParameter="Ужин" CornerRadius="100"/>
-
-
+                            <Button  Command="{Binding SelectFoodTypeCommand}"  CommandParameter="Ужин"  CornerRadius="100">
+                                <Button.BackgroundColor>
+                                    <Binding  Path="SelectedFoodType"  Converter="{StaticResource StatusToColorConverter}"  ConverterParameter="Ужин" />
+                                </Button.BackgroundColor>
+                            </Button>
                             <Label Grid.Row="1"  Text="Ужин" FontSize="12"  HorizontalOptions="Center" />
                         </Grid>
                     </HorizontalStackLayout>

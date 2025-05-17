@@ -130,7 +130,7 @@ namespace DiaHelp.ViewModel
             var endDate = DateTime.Now;
             var startDate = SelectedPeriod switch
             {
-                "1 День" => endDate.AddDays(1),
+                "1 День" => endDate.AddDays(-1),
                 "3 Месяца" => endDate.AddMonths(-3),
                 "6 Месяцев" => endDate.AddMonths(-6),
                 "1 Год" => endDate.AddYears(-1),

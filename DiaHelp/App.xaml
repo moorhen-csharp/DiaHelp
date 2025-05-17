@@ -16,6 +16,7 @@
             <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
             <converters:BooleanToColorConverter x:Key="BooleanToColorConverter"/>
             <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+            <converters:StatusToColorConverter x:Key="StatusToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

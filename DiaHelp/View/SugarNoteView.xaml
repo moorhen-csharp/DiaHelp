@@ -124,16 +124,15 @@
 
                                         <Label Text="{Binding Category}" />
                                     </HorizontalStackLayout>
+                                    
                                     <HorizontalStackLayout>
                                         <Label Text="Вес: "/>
                                         <Label Text="{Binding Weight}"/>
                                         <Label Text="г"/>
-
                                     </HorizontalStackLayout>
                                     
                                     <HorizontalStackLayout>
                                         <Label Text="Количество инсулина на еду: "/>
-
                                         <Label Text="{Binding InsulinFromFood}"/>
                                     </HorizontalStackLayout>
 
