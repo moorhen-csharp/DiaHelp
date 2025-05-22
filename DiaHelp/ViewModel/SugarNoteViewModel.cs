@@ -1,6 +1,5 @@
 ﻿using DiaHelp.Interface;
 using DiaHelp.Model;
-using DiaHelp.View;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -11,7 +10,7 @@ namespace DiaHelp.ViewModel
         private IWindowService _windowService;
         private readonly IDatabaseService _databaseService;
         private bool _isListEmpty = true;
-        private string _selectedPeriod = "3 Месяца";
+        private string _selectedPeriod = "1 День";
         private double _average;
         private bool _isSugarListVisible = true;
         private decimal _sugarLevel { get; set; }
@@ -36,7 +35,7 @@ namespace DiaHelp.ViewModel
             ShowSugarList = new RelayCommand(OnShowSugarList);
             ShowFoodList = new RelayCommand(OnShowFoodList);
 
-            Periods = ["1 День","3 Месяца", "6 Месяцев", "1 Год"];
+            Periods = ["1 День", "3 Месяца", "6 Месяцев", "1 Год"];
             CalculateCommand = new Command(async () => await CalculateAverage());
 
             LoadSugarNotesAsync();

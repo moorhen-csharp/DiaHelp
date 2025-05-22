@@ -109,6 +109,6 @@ namespace DiaHelp.ViewModel
 
         public ICommand SugarNotePage { get; }
         public ICommand SaveDataCommand { get; }
-        public ICommand SelectFoodTypeCommand {  get; }
+        public ICommand SelectFoodTypeCommand { get; }
     }
 }
