@@ -14,7 +14,7 @@
                         SelectedItem="{Binding SelectedPeriod}"
                         Margin="0,10"/>
 
-                <Label Text="Ваш средний уровень сахара в крови:" HorizontalOptions="Center" FontSize="15"/>
+                <Label Text="Ваш средний уровень сахара в крови: " HorizontalOptions="Center" FontSize="15"/>
 
                 <Label Text="{Binding Average, StringFormat=' {0:F1} ммоль/л'}"
                        FontSize="24"

@@ -60,7 +60,20 @@
             </Border>
 
             <Label Text="Диабет 2 типа:" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" FontSize="20" VerticalOptions="End"/>
-
+            
+            <Border Grid.Row="7" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6" Margin="5" Padding="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Школа диабета второго типа" Grid.Row="0" Margin="5" HorizontalTextAlignment="Center"/>
+                    <Button Text="Перейти к урокам" Background="Transparent" TextColor="DimGray" Grid.Row="1"/>
+                </Grid>
+            </Border>
 
         </Grid>
 
