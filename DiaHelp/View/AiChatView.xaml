@@ -7,7 +7,7 @@
 
         <!-- Шапка с кнопкой "Назад" -->
         <Grid Grid.Row="0" ColumnDefinitions="Auto, *">
-            <Button Text="← Назад" Command="{Binding BackCommand}" WidthRequest="80" HorizontalOptions="Start" Margin="0,0,10,0"/>
+            <Button Text="← Назад" Command="{Binding BackCommand}" Background="#2d2d2f" TextColor="White" WidthRequest="80" HorizontalOptions="Start" Margin="0,0,10,0"/>
 
             <Label Text="Диабет-ассистент" Grid.Column="1" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
         </Grid>
@@ -33,7 +33,7 @@
         <Grid Grid.Row="2" ColumnDefinitions="*, Auto" ColumnSpacing="10" VerticalOptions="End">
             <Entry Text="{Binding UserMessage}" Placeholder="Ваш вопрос о диабете..." PlaceholderColor="Gray" ReturnCommand="{Binding SendMessageCommand}" BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#2D2D2D}"/>
 
-            <Button Text="Отправить" Grid.Column="1" Command="{Binding SendMessageCommand}" WidthRequest="100"/>
+            <Button Text="Отправить" Grid.Column="1" FontSize="11" Command="{Binding SendMessageCommand}" WidthRequest="100"/>
         </Grid>
 
         <!-- Индикатор загрузки -->

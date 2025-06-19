@@ -23,7 +23,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Command="{Binding SugarNotePage}" BackgroundColor="#2d2d2f" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="back" TextColor="White" FontSize="15" />
+            <Button Command="{Binding SugarNotePage}" BackgroundColor="#2d2d2f" HeightRequest="20" Grid.Row="0" Grid.Column="0" Text="Назад" TextColor="White" FontSize="15" />
 
             <!--ввод-->
             <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0, 9, 0, 5" BackgroundColor="#3b3b3b">
